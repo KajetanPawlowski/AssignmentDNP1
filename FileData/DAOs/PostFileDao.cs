@@ -33,23 +33,24 @@ public class PostFileDao : IPostDAO
     {
         IEnumerable<Post> result = context.Posts.AsEnumerable();
         
-        if (!string.IsNullOrEmpty(searchParameters.Author))
+        if (!string.IsNullOrEmpty(searchParameters.UserName))
         {
-            result = context.Posts.Where(todo =>
-                todo.User.UserName.Equals(searchParameters.Author, StringComparison.OrdinalIgnoreCase));
+            result = context.Posts.Where(post =>
+                post.User.UserName.Equals(searchParameters.UserName, StringComparison.OrdinalIgnoreCase));
         }
-
-        if (searchParameters.AuthorId != null)
+        if (!string.IsNullOrEmpty(searchParameters.TitleContent))
         {
-            result = result.Where(t => t.User.Id == searchParameters.AuthorId);
+            result = context.Posts.Where(post =>
+                post.Title.Contains(searchParameters.TitleContent, StringComparison.OrdinalIgnoreCase));
         }
-        
-        if (!string.IsNullOrEmpty(searchParameters.Title))
+        if (!string.IsNullOrEmpty(searchParameters.BodyContent))
         {
-            result = result.Where(t =>
-                t.Title.Contains(searchParameters.Title, StringComparison.OrdinalIgnoreCase));
+            result = context.Posts.Where(post =>
+                post.Body.Contains(searchParameters.BodyContent, StringComparison.OrdinalIgnoreCase));
         }
 
         return Task.FromResult(result);
     }
+    
+    
 }

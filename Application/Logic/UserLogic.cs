@@ -44,4 +44,5 @@ public class UserLogic :IUserLogic
     {
         return userDao.GetAsync(searchParameters);
     }
+ 
 }

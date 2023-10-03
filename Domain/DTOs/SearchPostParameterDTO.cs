@@ -2,16 +2,15 @@
 
 public class SearchPostParameterDTO
 {
-    public string? Author { get;}
-    public int? AuthorId { get;}
-    public string? Title{ get;}
-    public string? Body { get; }
-
-    public SearchPostParameterDTO(string? user, int? userId, string? title, string body)
+    public string? UserName { get;}
+    public string? TitleContent { get;}
+    
+    public string? BodyContent { get;}
+    
+    public SearchPostParameterDTO(string? userName, string? titleContent, string? bodyContent)
     {
-        Author = user;
-        AuthorId = userId;
-        Title = title;
-        Body = body;
+        UserName = userName;
+        TitleContent = titleContent;
+        BodyContent = bodyContent;
     }
 }
