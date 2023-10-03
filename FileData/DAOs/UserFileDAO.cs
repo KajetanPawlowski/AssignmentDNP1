@@ -15,7 +15,7 @@ public class UserFileDao : IUserDAO
 // Post User
     public Task<User> CreateAsync(User user)
     {
-        int userId = 1;
+        int userId = 0;
         if (context.Users.Any())
         {
             userId = context.Users.Max(u => u.Id);

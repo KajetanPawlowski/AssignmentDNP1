@@ -4,12 +4,11 @@ public class Post
 {
     public int Id { get; set; }
     public string Title { get; set; }
-    public int AuthorId { get; }
+    public User Author { get; }
     public string Body { get; set; }
-
-    public Post(int userId, string title, string body)
+    public Post(User author, string title, string body)
     {
-        AuthorId = userId;
+        Author = author;
         Title = title;
         Body = body;
     }
