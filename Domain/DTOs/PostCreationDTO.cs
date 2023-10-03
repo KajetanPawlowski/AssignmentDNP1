@@ -1,16 +1,15 @@
 
-
 namespace Domain.DTOs;
 
 public class PostCreationDTO
 {
-    public int AuthorId { get; }
+    public int UserId { get; }
     public string Title { get; }
     public string Body { get; }
     
-    public PostCreationDTO(string userid, string title, string body)
+    public PostCreationDTO(int userId, string title, string body)
     {
-        AuthorId = int.Parse(userid);
+        UserId = userId;
         Title = title;
         Body = body;
     }

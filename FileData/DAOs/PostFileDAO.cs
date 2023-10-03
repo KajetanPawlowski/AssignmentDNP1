@@ -17,11 +17,11 @@ public class PostFileDAO : IPostDAO
         int postId = 0;
         if (context.Posts.Any())
         {
-            postId = context.Posts.Max(p => p.Id);
+            postId = context.Posts.Max(p => p.PostId);
             postId++;
         }
 
-        post.Id = postId;
+        post.PostId = postId;
 
         context.Posts.Add(post);
         context.SaveChanges();
@@ -36,12 +36,12 @@ public class PostFileDAO : IPostDAO
         if (!string.IsNullOrEmpty(searchParameters.Author))
         {
             result = context.Posts.Where(todo =>
-                todo.Author.UserName.Equals(searchParameters.Author, StringComparison.OrdinalIgnoreCase));
+                todo.User.UserName.Equals(searchParameters.Author, StringComparison.OrdinalIgnoreCase));
         }
 
         if (searchParameters.AuthorId != null)
         {
-            result = result.Where(t => t.Author.Id == searchParameters.AuthorId);
+            result = result.Where(t => t.User.Id == searchParameters.AuthorId);
         }
         
         if (!string.IsNullOrEmpty(searchParameters.Title))

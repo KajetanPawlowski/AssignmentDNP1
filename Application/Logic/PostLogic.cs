@@ -18,12 +18,13 @@ public class PostLogic: IPostLogic
     
     public async Task<Post> CreateAsync(PostCreationDTO dto)
     {
-        User? author = await userDao.GetByIdAsync(dto.AuthorId);
-        if (author == null)
+        ValidatePostCreationData(dto);
+        
+        User? user = await userDao.GetByIdAsync(dto.UserId);
+        if (user == null)
             throw new Exception("UserNotFound");
         
-        ValidatePostCreationData(dto);
-        Post toCreate = new Post(author, dto.Title, dto.Body);
+        Post toCreate = new Post(user, dto.Title, dto.Body);
 
         Post created = await postDao.CreateAsync(toCreate);
 

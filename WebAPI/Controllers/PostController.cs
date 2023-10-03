@@ -16,14 +16,14 @@ public class PostController : ControllerBase
     {
         this.postLogic = postLogic;
     }
-    //POST POST
+    //POST post
     [HttpPost]
     public async Task<ActionResult<Post>> CreateAsync(PostCreationDTO dto)
     {
         try
         {
             Post post = await postLogic.CreateAsync(dto);
-            return Created($"/posts/{post.Id}", post);
+            return Created($"/posts/{post.PostId}", post);
         }
         catch (Exception e)
         {

@@ -3,14 +3,14 @@ namespace Domain.Model;
 
 public class Post
 {
-    public int Id { get; set; }
+    public int PostId { get; set; }
     public string Title { get; set; }
-    public User Author { get; set; }
+    public User User { get; set; }
     public string Body { get; set; }
     
-    public Post(User author, string title, string body)
+    public Post(User user, string title, string body)
     {
-        Author = author;
+        User = user;
         Title = title;
         Body = body;
     }
