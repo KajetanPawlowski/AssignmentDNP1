@@ -3,7 +3,7 @@ using Domain.DTOs;
 using Domain.Model;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ToDosAPI.Controllers;
+namespace WebAPI.Controllers;
 
 
 [ApiController]
@@ -18,9 +18,18 @@ public class PostController : ControllerBase
     }
     //POST POST
     [HttpPost]
-    public async Task<ActionResult<User>> CreateAsync(PostCreationDTO dto)
+    public async Task<ActionResult<Post>> CreateAsync(PostCreationDTO dto)
     {
-        throw new NotImplementedException();
+        try
+        {
+            Post post = await postLogic.CreateAsync(dto);
+            return Created($"/posts/{post.Id}", post);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
     }
     //GET Post
     [HttpGet]

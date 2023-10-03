@@ -33,8 +33,10 @@ public class FileContext
         if (!File.Exists(filePath))
         {
             dataContainer = new ()
-            {
-                Users = new List<User>()
+            { 
+                Users = new List<User>(),
+                Posts = new List<Post>()
+                    
             };
             return;
         }

@@ -32,10 +32,10 @@ public class PostLogic: IPostLogic
 
     private static void ValidatePostCreationData(PostCreationDTO dto)
     {
-        string titleWithoutBlanks = dto.Title.Replace(" ", "");
+        string title = dto.Title;
         string body = dto.Body;
 
-        if (titleWithoutBlanks.Length == 0)
+        if (string.IsNullOrEmpty(title))
         {
             throw new Exception("Post has to have a title");
         }
