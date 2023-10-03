@@ -42,6 +42,6 @@ public class UserLogic :IUserLogic
     }
     public Task<IEnumerable<User>> GetAsync(SearchUserParameterDTO searchParameters)
     {
-        throw new NotImplementedException();
+        return userDao.GetAsync(searchParameters);
     }
 }
