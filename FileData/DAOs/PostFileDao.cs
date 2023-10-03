@@ -4,21 +4,21 @@ using Domain.Model;
 
 namespace FileData.DAOs;
 
-public class PostFileDAO : IPostDAO
+public class PostFileDao : IPostDAO
 {
     private readonly FileContext context;
 
-    public PostFileDAO(FileContext context)
+    public PostFileDao(FileContext context)
     {
         this.context = context;
-    } 
+    }  
     public Task<Post> CreateAsync(Post post)
-    {
+    {   
         int postId = 0;
         if (context.Posts.Any())
         {
-            postId = context.Posts.Max(p => p.PostId);
-            postId++;
+             postId = context.Posts.Max(p => p.PostId);
+             postId++;
         }
 
         post.PostId = postId;
