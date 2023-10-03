@@ -18,6 +18,9 @@ builder.Services.AddScoped<FileContext>();
 builder.Services.AddScoped<IUserDAO, UserFileDao>();
 builder.Services.AddScoped<IUserLogic, UserLogic>();
 
+builder.Services.AddScoped<IPostDAO, PostFileDAO>();
+builder.Services.AddScoped<IPostLogic, PostLogic>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
