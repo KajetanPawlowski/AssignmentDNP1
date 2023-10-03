@@ -45,4 +45,9 @@ public class PostLogic: IPostLogic
             throw new Exception("Post can be maximum 350 characters");
         }
     }
+    
+    public Task<IEnumerable<Post>> GetAsync(SearchPostParameterDTO searchParameters)
+    {
+        return postDao.GetAsync(searchParameters);
+    }
 }

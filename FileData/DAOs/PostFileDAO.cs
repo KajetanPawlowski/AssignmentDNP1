@@ -1,4 +1,5 @@
 using Application.DAOInterfaces;
+using Domain.DTOs;
 using Domain.Model;
 
 namespace FileData.DAOs;
@@ -26,5 +27,29 @@ public class PostFileDAO : IPostDAO
         context.SaveChanges();
 
         return Task.FromResult(post);
+    }
+
+    public Task<IEnumerable<Post>> GetAsync(SearchPostParameterDTO searchParameters)
+    {
+        IEnumerable<Post> result = context.Posts.AsEnumerable();
+        
+        if (!string.IsNullOrEmpty(searchParameters.Author))
+        {
+            result = context.Posts.Where(todo =>
+                todo.Author.UserName.Equals(searchParameters.Author, StringComparison.OrdinalIgnoreCase));
+        }
+
+        if (searchParameters.AuthorId != null)
+        {
+            result = result.Where(t => t.Author.Id == searchParameters.AuthorId);
+        }
+        
+        if (!string.IsNullOrEmpty(searchParameters.Title))
+        {
+            result = result.Where(t =>
+                t.Title.Contains(searchParameters.Title, StringComparison.OrdinalIgnoreCase));
+        }
+
+        return Task.FromResult(result);
     }
 }

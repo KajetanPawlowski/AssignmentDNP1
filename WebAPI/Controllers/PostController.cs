@@ -24,8 +24,18 @@ public class PostController : ControllerBase
     }
     //GET Post
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<User>>> GetAsync([FromQuery] string? username)
+    public async Task<ActionResult<IEnumerable<Post>>> GetAsync([FromQuery] string? author, int aunthorId, string? title, string? body )
     {
-        throw new NotImplementedException();
+        try
+        {
+            SearchPostParameterDTO parameters = new(author, aunthorId, title, body);
+            IEnumerable<Post> posts= await postLogic.GetAsync(parameters);
+            return Ok(posts);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        } 
     }
 }
