@@ -78,7 +78,7 @@ public class PostController : ControllerBase
         }
     }
   //DELETE Post
-  /*[HttpGet("{id:int}")]
+  [HttpDelete("{id:int}")]
   public async Task<ActionResult> DeleteAsync([FromRoute] int id)
   {
       try
@@ -91,5 +91,5 @@ public class PostController : ControllerBase
           Console.WriteLine(e);
           return StatusCode(500, e.Message);
       }
-  }*/
+  }
 }
