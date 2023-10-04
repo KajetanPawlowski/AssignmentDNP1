@@ -16,7 +16,7 @@ public class PostController : ControllerBase
     {
         this.postLogic = postLogic;
     }
-    //POST post
+    //POST Post
     [HttpPost]
     public async Task<ActionResult<Post>> CreateAsync(PostCreationDTO dto)
     {
@@ -33,11 +33,11 @@ public class PostController : ControllerBase
     }
     //GET Post
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Post>>> GetByUsernameAsync([FromQuery] string? userName, string? titleContent, string? bodyContent )
+    public async Task<ActionResult<IEnumerable<Post>>> GetByUsernameAsync([FromQuery] string? userName, [FromQuery] string? titleContent)
     {
         try
         {
-            SearchPostParameterDTO parameters = new(userName, titleContent, bodyContent);
+            SearchPostParameterDTO parameters = new(userName, titleContent);
             IEnumerable<Post> posts= await postLogic.GetAsync(parameters);
             return Ok(posts);
         }
@@ -47,4 +47,49 @@ public class PostController : ControllerBase
             return StatusCode(500, e.Message);
         } 
     }
+    //PATCH Post
+    [HttpPatch]
+    public async Task<ActionResult> UpdateAsync([FromBody] PostUpdateDTO post)
+    {
+        try
+        {
+            await postLogic.UpdateAsync(post);
+            return Ok();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+    }
+    //GET BY ID Post
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<PostBasicDTO>> GetById([FromRoute] int id)
+    {
+        try
+        {
+            PostBasicDTO result = await postLogic.GetByIdAsync(id);
+            return Ok(result);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+    }
+  //DELETE Post
+  /*[HttpGet("{id:int}")]
+  public async Task<ActionResult> DeleteAsync([FromRoute] int id)
+  {
+      try
+      {
+          await postLogic.DeleteAsync(id);
+          return Ok();
+      }
+      catch (Exception e)
+      {
+          Console.WriteLine(e);
+          return StatusCode(500, e.Message);
+      }
+  }*/
 }

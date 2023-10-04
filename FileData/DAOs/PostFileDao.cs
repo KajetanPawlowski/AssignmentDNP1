@@ -43,14 +43,43 @@ public class PostFileDao : IPostDAO
             result = context.Posts.Where(post =>
                 post.Title.Contains(searchParameters.TitleContent, StringComparison.OrdinalIgnoreCase));
         }
-        if (!string.IsNullOrEmpty(searchParameters.BodyContent))
-        {
-            result = context.Posts.Where(post =>
-                post.Body.Contains(searchParameters.BodyContent, StringComparison.OrdinalIgnoreCase));
-        }
 
         return Task.FromResult(result);
     }
+
+    public Task UpdateAsync(Post toUpdate)
+    {
+        Post? existing = context.Posts.FirstOrDefault(post => post.PostId == toUpdate.PostId);
+        if (existing == null)
+        {
+            throw new Exception($"Post with id {toUpdate.PostId} does not exist!");
+        }
+
+        context.Posts.Remove(existing);
+        context.Posts.Add(toUpdate);
+        
+        context.SaveChanges();
+        
+        return Task.CompletedTask;
+    }
+
+    public Task<Post?> GetByIdAsync(int id)
+    {
+        Post? existing = context.Posts.FirstOrDefault(t => t.PostId == id);
+        return Task.FromResult(existing); 
+    }
     
+    public Task DeleteAsync(int id)
+    {
+        Post? existing = context.Posts.FirstOrDefault(post => post.PostId == id);
+        if (existing == null)
+        {
+            throw new Exception($"Todo with id {id} does not exist!");
+        }
+
+        context.Posts.Remove(existing); 
+        context.SaveChanges();
     
+        return Task.CompletedTask;
+    }
 }

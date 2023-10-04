@@ -51,7 +51,59 @@ public class PostLogic: IPostLogic
     {
         return postDao.GetAsync(searchParameters);
     }
-    
 
-    
+    public async Task UpdateAsync(PostUpdateDTO post)
+    {
+        Post? existing = await postDao.GetByIdAsync(post.PostId);
+        
+        if (existing == null)
+        {
+            throw new Exception($"Post with ID {post.PostId} not found!");
+        }
+
+        User? user = null;
+        if (post.UserId != null)
+        {
+            user = await userDao.GetByIdAsync((int)post.UserId);
+            if (user == null)
+            {
+                throw new Exception($"User with id {post.UserId} was not found.");
+            }
+        }
+
+        User userToUse = user ?? existing.User;
+        string titleToUse = post.TitleContent ?? existing.Title;
+        string bodyToUse = post.Body ?? existing.Body;
+
+        Post updated = new(userToUse, titleToUse, bodyToUse)
+        {
+            Title = titleToUse,
+            Body  = bodyToUse,
+            PostId = existing.PostId
+        };
+
+        await postDao.UpdateAsync(updated);
+    }
+
+    public async Task<PostBasicDTO> GetByIdAsync(int id)
+    {
+        Post? post = await postDao.GetByIdAsync(id);
+        if (post == null)
+        {
+            throw new Exception($"Post with id {id} not found");
+        }
+
+        return new PostBasicDTO(post.Title, post.User.UserName, post.PostId, post.Body);
+    }
+
+    public async Task DeleteAsync(int id)
+    {
+        Post? todo = await postDao.GetByIdAsync(id);
+        if (todo == null)
+        {
+            throw new Exception($"Post with ID {id} was not found!");
+        }
+        
+        await postDao.DeleteAsync(id);
+    }
 }
