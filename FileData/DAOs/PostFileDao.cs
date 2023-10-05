@@ -47,16 +47,21 @@ public class PostFileDao : IPostDAO
         return Task.FromResult(result);
     }
 
-    public Task UpdateAsync(Post toUpdate)
+    public Task UpdateAsync(PostUpdateDTO dto)
     {
-        Post? existing = context.Posts.FirstOrDefault(post => post.PostId == toUpdate.PostId);
+        Post? existing = context.Posts.FirstOrDefault(post => post.PostId == dto.PostId);
         if (existing == null)
         {
-            throw new Exception($"Post with id {toUpdate.PostId} does not exist!");
+            throw new Exception($"Post with id {dto.PostId} does not exist!");
         }
-
-        context.Posts.Remove(existing);
-        context.Posts.Add(toUpdate);
+        if (dto.NewTitle != null)
+        {
+            existing.Title = dto.NewTitle;
+        }
+        if (dto.NewBody != null)
+        {
+            existing.Body = dto.NewBody;
+        }
         
         context.SaveChanges();
         

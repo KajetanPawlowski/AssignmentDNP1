@@ -33,15 +33,25 @@ public class PostLogic: IPostLogic
 
     private static void ValidatePostCreationData(PostCreationDTO dto)
     {
-        string title = dto.Title;
-        string body = dto.Body;
+        ValidatePostTitle(dto.Title);
+        ValidatePostBody(dto.Body);
+    }
 
+    private static void ValidatePostTitle(string title)
+    {
         if (string.IsNullOrEmpty(title))
         {
             throw new Exception("Post has to have a title");
         }
+        if (title.Length > 100)
+        {
+            throw new Exception("Post title can be maximum 100 characters");
+        }
+    }
 
-        if (body.Length > 350)
+    private static void ValidatePostBody(string body)
+    {
+        if(body.Length > 350)
         {
             throw new Exception("Post can be maximum 350 characters");
         }
@@ -52,37 +62,26 @@ public class PostLogic: IPostLogic
         return postDao.GetAsync(searchParameters);
     }
 
-    public async Task UpdateAsync(PostUpdateDTO post)
+    public async Task UpdateAsync(PostUpdateDTO dto)
     {
-        Post? existing = await postDao.GetByIdAsync(post.PostId);
+        Post? existing = await postDao.GetByIdAsync(dto.PostId);
         
         if (existing == null)
         {
-            throw new Exception($"Post with ID {post.PostId} not found!");
+            throw new Exception($"Post with ID {dto.PostId} not found!");
         }
-
-        User? user = null;
-        if (post.UserId != null)
+        //if null - keep the old title
+        if (dto.NewTitle != null)
         {
-            user = await userDao.GetByIdAsync((int)post.UserId);
-            if (user == null)
-            {
-                throw new Exception($"User with id {post.UserId} was not found.");
-            }
+            ValidatePostTitle(dto.NewTitle);
         }
-
-        User userToUse = user ?? existing.User;
-        string titleToUse = post.TitleContent ?? existing.Title;
-        string bodyToUse = post.Body ?? existing.Body;
-
-        Post updated = new(userToUse, titleToUse, bodyToUse)
+        //if null - keep ald body
+        if (dto.NewBody != null)
         {
-            Title = titleToUse,
-            Body  = bodyToUse,
-            PostId = existing.PostId
-        };
-
-        await postDao.UpdateAsync(updated);
+            ValidatePostBody(dto.NewBody);
+        }
+        
+        await postDao.UpdateAsync(dto);
     }
 
     public async Task<PostBasicDTO> GetByIdAsync(int id)

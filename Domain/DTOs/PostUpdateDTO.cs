@@ -3,13 +3,14 @@
 public class PostUpdateDTO
 {
     public int PostId { get; }
-    public int? UserId { get; set; } 
-    public string? TitleContent { get; set; }
-    public string? Body { get; set; }
+    public string? NewTitle { get; set; }
+    public string? NewBody { get; set; }
 
-    public PostUpdateDTO(int postId)  
+    public PostUpdateDTO(int postId, string? newTitle, string? newBody)  
     {
         PostId = postId;
-        
+        NewTitle = newTitle;
+        NewBody = newBody;
+
     }
 }
