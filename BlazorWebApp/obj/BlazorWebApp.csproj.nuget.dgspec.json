@@ -153,7 +153,11 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "/Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/Domain/Domain.csproj": {
+                "projectPath": "/Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/Domain/Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
