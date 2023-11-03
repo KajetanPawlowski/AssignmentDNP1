@@ -30,6 +30,35 @@ public class UserFileDao : IUserDAO
         return Task.FromResult(user);
     }
 
+    public Task<User> AssignRoleAsync(AssignRoleDTO dto)
+    {
+        User? existing = context.Users.FirstOrDefault(u =>
+            u.UserName.Equals(dto.Username, StringComparison.OrdinalIgnoreCase)
+        );
+        ValidateRole(dto.Role);
+        
+        existing.Role = dto.Role;
+        
+        context.SaveChanges();
+        
+        return Task.FromResult(existing);
+    }
+
+    private void ValidateRole(string role)
+    {
+        switch (role)
+        {
+            case "admin":
+            case "user":
+                // Valid roles, no exception thrown
+                break;
+
+            default:
+                throw new Exception("Invalid role");
+        }
+    }
+
+
     public Task<User?> GetByUsernameAsync(string userName)
     {
         User? existing = context.Users.FirstOrDefault(u =>

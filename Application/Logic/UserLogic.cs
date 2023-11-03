@@ -13,18 +13,18 @@ public class UserLogic :IUserLogic
     {
         this.userDao = userDao;
     }
-    public async Task<User> RegisterUserAsync(UserCreationDTO dto)
+    public async Task<User> RegisterUserAsync(UserLoginDTO dto)
     {
-        User? existing = await userDao.GetByUsernameAsync(dto.UserName);
+        User? existing = await userDao.GetByUsernameAsync(dto.Username);
         if (existing != null)
             throw new Exception("Username already taken!");
 
         ValidateRegistrationData(dto);
         User toCreate = new User 
         {
-            UserName = dto.UserName,
+            UserName = dto.Username,
             Password = dto.Password,
-            Role = dto.Role
+            Role = "user"
         };
     
         User created = await userDao.CreateAsync(toCreate);
@@ -49,9 +49,21 @@ public class UserLogic :IUserLogic
         return await Task.FromResult(existingUser);
     }
 
-    private static void ValidateRegistrationData(UserCreationDTO userToCreate)
+    public async Task<User> AssignRoleAsync(AssignRoleDTO dto)
     {
-        string userName = userToCreate.UserName;
+        User? existingUser = await userDao.GetByUsernameAsync(dto.Username);
+        
+        if (existingUser == null)
+        {
+            throw new Exception("User not found");
+        }
+        
+        return await userDao.AssignRoleAsync(dto);
+    }
+
+    private static void ValidateRegistrationData(UserLoginDTO userToCreate)
+    {
+        string userName = userToCreate.Username;
         string password = userToCreate.Password;
 
         if (userName.Length < 3)

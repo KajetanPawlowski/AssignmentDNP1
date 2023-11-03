@@ -11,6 +11,12 @@
       "UserName": "ariana",
       "Password": "pass",
       "Role": "user"
+    },
+    {
+      "Id": 3,
+      "UserName": "maja",
+      "Password": "pass",
+      "Role": "user"
     }
   ],
   "Posts": []

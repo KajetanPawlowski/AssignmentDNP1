@@ -3,6 +3,7 @@ using Domain;
 using Domain.DTOs;
 using Domain.Model;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
@@ -19,9 +20,9 @@ public class UserController : ControllerBase
         this.userLogic = userLogic;
     }
     // Post User
-    [HttpPost, Authorize(Policy = "isAdmin")]
+    [HttpPost, AllowAnonymous]
 
-    public async Task<ActionResult<User>> CreateAsync(UserCreationDTO dto)
+    public async Task<ActionResult<User>> CreateAsync(UserLoginDTO dto)
     {
         try
         {
@@ -43,6 +44,21 @@ public class UserController : ControllerBase
             SearchUserParameterDTO parameters = new(username);
             IEnumerable<User> users = await userLogic.GetAsync(parameters);
             return Ok(users);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+    }
+    //PATCH User (role assignment
+    [HttpPatch, Authorize(Policy = "isAdmin")]
+    public async Task<ActionResult<User>> AssignRoleAsync(AssignRoleDTO dto)
+    {
+        try
+        {
+            User user = await userLogic.AssignRoleAsync(dto);
+            return Ok(user);
         }
         catch (Exception e)
         {
