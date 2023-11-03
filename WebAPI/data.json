@@ -7,17 +7,30 @@
       "Role": "admin"
     },
     {
-      "Id": 2,
-      "UserName": "ariana",
-      "Password": "pass",
-      "Role": "user"
-    },
-    {
-      "Id": 3,
-      "UserName": "maja",
+      "Id": 1,
+      "UserName": "kajetan",
       "Password": "pass",
       "Role": "user"
     }
   ],
-  "Posts": []
+  "Posts": [
+    {
+      "PostId": 0,
+      "Title": "Hello There - first post",
+      "Username": "admin",
+      "Body": "Wow this place is awsome - have you seen the pink on the side!!!"
+    },
+    {
+      "PostId": 1,
+      "Title": "hemm",
+      "Username": "admin",
+      "Body": "wroking now?"
+    },
+    {
+      "PostId": 2,
+      "Title": "Hello Everyone",
+      "Username": "kajetan",
+      "Body": "this is the first post i write here"
+    }
+  ]
 }

@@ -1,0 +1,18 @@
+@using static Domain.Model.Post
+<div class="post-box">
+    <div class="username-field">
+        @ForDisplay.Username
+    </div>
+    <div class="title-field">
+        @ForDisplay.Title
+    </div>
+    <div class="post-body">
+        @ForDisplay.Body
+    </div>
+</div>
+
+
+@code {
+    [Parameter]
+    public Domain.Model.Post ForDisplay { get; set; }
+}

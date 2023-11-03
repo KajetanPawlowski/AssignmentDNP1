@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/Z94x7iK1Wydoypc5DHDb9gS9j/ENky6EiQ5YXvshmY=",
+  "Hash": "8Xogrj73BPQ6hSUM13AJdO6SiRFFS4pWe6DZmO9haZY=",
   "Source": "BlazorWebApp",
   "BasePath": "_content/BlazorWebApp",
   "Mode": "Default",
@@ -270,6 +270,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.png"
+    },
+    {
+      "Identity": "/Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/BlazorWebApp/wwwroot/img/Login.png",
+      "SourceId": "BlazorWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/BlazorWebApp/wwwroot/",
+      "BasePath": "_content/BlazorWebApp",
+      "RelativePath": "img/Login.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/Login.png"
+    },
+    {
+      "Identity": "/Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/BlazorWebApp/wwwroot/img/Logout.png",
+      "SourceId": "BlazorWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/BlazorWebApp/wwwroot/",
+      "BasePath": "_content/BlazorWebApp",
+      "RelativePath": "img/Logout.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/Logout.png"
     }
   ]
 }

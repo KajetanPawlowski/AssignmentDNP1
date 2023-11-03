@@ -1,0 +1,31 @@
+@page "/button"
+@using HttpClients.Interfaces
+@inject NavigationManager navMgr
+@inject IAuthHttpClient authService
+
+<AuthorizeView>
+    <Authorized>
+        <div>
+            <img class="icon" src="img/Logout.png" @onclick="Logout"/>
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <div>
+            <img class="icon" src="img/Login.png" @onclick="Login"/>
+        </div>
+    </NotAuthorized>
+</AuthorizeView>
+@code {
+
+    private void Login()
+    {
+        navMgr.NavigateTo("/Login");
+    }
+
+    private async Task Logout()
+    {
+        await authService.LogoutAsync();
+        navMgr.NavigateTo("/");
+    }
+
+}

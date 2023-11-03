@@ -20,10 +20,11 @@ builder.Services.AddScoped(
     sp =>
         new HttpClient
         {
-            BaseAddress = new Uri("http://localhost:5273")
+            BaseAddress = new Uri("http://localhost:5038")
         }
 );
 builder.Services.AddScoped<IAuthHttpClient, JwtAuthClient>();
+builder.Services.AddScoped<IPostHttpClient, PostHttpClient>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthProvider>();
 
 var app = builder.Build();

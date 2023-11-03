@@ -57,6 +57,14 @@
       "PackagePath": "staticwebassets/favicon.png"
     },
     {
+      "Id": "/Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/BlazorWebApp/wwwroot/img/Login.png",
+      "PackagePath": "staticwebassets/img/Login.png"
+    },
+    {
+      "Id": "/Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/BlazorWebApp/wwwroot/img/Logout.png",
+      "PackagePath": "staticwebassets/img/Logout.png"
+    },
+    {
       "Id": "obj/Debug/net7.0/staticwebassets/msbuild.BlazorWebApp.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

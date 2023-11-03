@@ -41,3 +41,7 @@
 /Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/BlazorWebApp/bin/Debug/net7.0/Domain.pdb
 /Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/BlazorWebApp/bin/Debug/net7.0/HttpClients.pdb
 /Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/BlazorWebApp/obj/Debug/net7.0/BlazorWebApp.csproj.CopyComplete
+/Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/BlazorWebApp/obj/Debug/net7.0/scopedcss/Pages/Login.razor.rz.scp.css
+/Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/BlazorWebApp/obj/Debug/net7.0/scopedcss/Pages/Register.razor.rz.scp.css
+/Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/BlazorWebApp/obj/Debug/net7.0/scopedcss/Shared/LoginButtons.razor.rz.scp.css
+/Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/BlazorWebApp/obj/Debug/net7.0/scopedcss/Pages/Post.razor.rz.scp.css

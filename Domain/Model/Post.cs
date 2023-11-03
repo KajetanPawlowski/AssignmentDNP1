@@ -5,12 +5,12 @@ public class Post
 {
     public int PostId { get; set; }
     public string Title { get; set; }
-    public User User { get; set; }
+    public string Username { get; set; }
     public string Body { get; set; }
     
-    public Post(User user, string title, string body)
+    public Post(string username, string title, string body)
     {
-        User = user;
+        Username = username;
         Title = title;
         Body = body;
     }

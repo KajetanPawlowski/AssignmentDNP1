@@ -3,14 +3,8 @@ namespace Domain.DTOs;
 
 public class PostCreationDTO
 {
-    public int UserId { get; }
-    public string Title { get; }
-    public string Body { get; }
+    public string Username { get; init;  }
+    public string Title { get; init;  }
+    public string Body { get; init;  }
     
-    public PostCreationDTO(int userId, string title, string body)
-    {
-        UserId = userId;
-        Title = title;
-        Body = body;
-    }
 }

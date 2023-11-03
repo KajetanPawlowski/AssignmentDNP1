@@ -9,12 +9,12 @@ namespace HttpClients.Implementations;
 public class JwtAuthClient : IAuthHttpClient
 {
     private readonly HttpClient client;
+    public static string? Jwt { get; private set; } = "";
 
     public JwtAuthClient(HttpClient client)
     {
         this.client = client;
     }
-    public static string? Jwt { get; private set; } = "";
 
     public Action<ClaimsPrincipal> OnAuthStateChanged { get; set; } = null!;
     
@@ -57,14 +57,19 @@ public class JwtAuthClient : IAuthHttpClient
         return principal;
     }
     
-    public async Task LoginAsync(UserLoginDTO dto)
+    public async Task LoginAsync(string username, string password)
     {
+        UserLoginDTO dto = new()
+        {
+            Username = username,
+            Password = password
+        };
+        
         string userAsJson = JsonSerializer.Serialize(dto);
         StringContent content = new(userAsJson, Encoding.UTF8, "application/json");
 
         HttpResponseMessage response = await client.PostAsync("/login", content);
         string responseContent = await response.Content.ReadAsStringAsync();
-
         if (!response.IsSuccessStatusCode)
         {
             throw new Exception(responseContent);
@@ -80,17 +85,35 @@ public class JwtAuthClient : IAuthHttpClient
 
     public Task LogoutAsync()
     {
-        throw new NotImplementedException();
+        Jwt = null;
+        ClaimsPrincipal principal = new();
+        OnAuthStateChanged.Invoke(principal);
+        return Task.CompletedTask;
     }
 
-    public Task RegisterAsync(UserLoginDTO dto)
+    public async Task RegisterAsync(string username, string password)
     {
-        throw new NotImplementedException();
+        UserLoginDTO dto = new()
+        {
+            Username = username,
+            Password = password
+        };
+        string dtoAsJson = JsonSerializer.Serialize(dto);
+        StringContent content = new(dtoAsJson, Encoding.UTF8, "application/json");
+        
+        HttpResponseMessage response = await client.PostAsync("/User", content);
+        string responseContent = await response.Content.ReadAsStringAsync();
+
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new Exception(responseContent);
+        }
     }
 
     public Task<ClaimsPrincipal> GetAuthAsync()
     {
-        throw new NotImplementedException();
+        ClaimsPrincipal principal = CreateClaimsPrincipal();
+        return Task.FromResult(principal);
     }
 
 }

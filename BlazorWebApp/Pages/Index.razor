@@ -1,9 +1,45 @@
 ﻿@page "/"
+@using HttpClients.Interfaces
+@inject IPostHttpClient PostHttpClient
+@inject NavigationManager navMgr
 
 <PageTitle>Index</PageTitle>
+<AuthorizeView>
+    <NotAuthorized>
+        <h3>Log in to see more</h3>
+    </NotAuthorized>
+    <Authorized>
+        @if (posts == null)
+        {
+            <p>Loading posts....</p>
+        }
+        else if (!posts.Any())
+        {
+            <p>No Posts to display</p>
+        }
+        else
+        {
+            @foreach (var post in posts)
+            {
+                <Post ForDisplay="post"/>
+            }
+        }
+        
+    </Authorized>
+</AuthorizeView>
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?"/>
+@code
+{
+    List<Domain.Model.Post> posts = null;
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            posts = await PostHttpClient.GetPostsAsync();
+        }
+        catch (Exception e)
+        {   
+            Console.WriteLine(e);
+        }
+    }
+}

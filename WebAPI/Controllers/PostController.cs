@@ -22,6 +22,7 @@ public class PostController : ControllerBase
     [HttpPost, Authorize(Policy = "isUser")]
     public async Task<ActionResult<Post>> CreateAsync(PostCreationDTO dto)
     {
+        Console.WriteLine("Trying my best");
         try
         {
             Post post = await postLogic.CreateAsync(dto);
