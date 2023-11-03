@@ -1,6 +1,7 @@
 using Application.LogicInterfaces;
 using Domain.DTOs;
 using Domain.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
@@ -8,6 +9,7 @@ namespace WebAPI.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[Authorize]
 public class PostController : ControllerBase
 {
     private readonly IPostLogic postLogic;
@@ -17,7 +19,7 @@ public class PostController : ControllerBase
         this.postLogic = postLogic;
     }
     //POST Post
-    [HttpPost]
+    [HttpPost, Authorize(Policy = "isUser")]
     public async Task<ActionResult<Post>> CreateAsync(PostCreationDTO dto)
     {
         try
@@ -32,7 +34,7 @@ public class PostController : ControllerBase
         }
     }
     //GET Post
-    [HttpGet]
+    [HttpGet, AllowAnonymous]
     public async Task<ActionResult<IEnumerable<Post>>> GetByUsernameAsync([FromQuery] string? userName, [FromQuery] string? titleContent)
     {
         try
@@ -48,7 +50,7 @@ public class PostController : ControllerBase
         } 
     }
     //PATCH Post
-    [HttpPatch]
+    [HttpPatch, Authorize("isUser")]
     public async Task<ActionResult> UpdateAsync([FromBody] PostUpdateDTO post)
     {
         try
@@ -63,7 +65,7 @@ public class PostController : ControllerBase
         }
     }
     //GET BY ID Post
-    [HttpGet("{id:int}")]
+    [HttpGet("{id:int}"), Authorize("isUser")]
     public async Task<ActionResult<PostBasicDTO>> GetById([FromRoute] int id)
     {
         try
@@ -78,7 +80,8 @@ public class PostController : ControllerBase
         }
     }
   //DELETE Post
-  [HttpDelete("{id:int}")]
+  
+  [HttpDelete("{id:int}"), Authorize("isAdmin")]
   public async Task<ActionResult> DeleteAsync([FromRoute] int id)
   {
       try

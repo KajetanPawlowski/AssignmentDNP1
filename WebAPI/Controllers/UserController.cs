@@ -2,12 +2,14 @@ using Application.LogicInterfaces;
 using Domain;
 using Domain.DTOs;
 using Domain.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ToDosAPI.Controllers;
+namespace WebAPI.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[Authorize]
 public class UserController : ControllerBase
 {
     private readonly IUserLogic userLogic;
@@ -17,12 +19,13 @@ public class UserController : ControllerBase
         this.userLogic = userLogic;
     }
     // Post User
-    [HttpPost]
+    [HttpPost, Authorize(Policy = "isAdmin")]
+
     public async Task<ActionResult<User>> CreateAsync(UserCreationDTO dto)
     {
         try
         {
-            User user = await userLogic.CreateAsync(dto);
+            User user = await userLogic.RegisterUserAsync(dto);
             return Created($"/users/{user.Id}", user);
         }
         catch (Exception e)
@@ -32,7 +35,7 @@ public class UserController : ControllerBase
         }
     }
     //GET User
-    [HttpGet]
+    [HttpGet, Authorize(Policy = "isUser")]
     public async Task<ActionResult<IEnumerable<User>>> GetAsync([FromQuery] string? username)
     {
         try

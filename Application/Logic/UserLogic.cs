@@ -13,32 +13,57 @@ public class UserLogic :IUserLogic
     {
         this.userDao = userDao;
     }
-    public async Task<User> CreateAsync(UserCreationDTO dto)
+    public async Task<User> RegisterUserAsync(UserCreationDTO dto)
     {
         User? existing = await userDao.GetByUsernameAsync(dto.UserName);
         if (existing != null)
             throw new Exception("Username already taken!");
 
-        ValidateUsernameData(dto);
+        ValidateRegistrationData(dto);
         User toCreate = new User 
         {
-            UserName = dto.UserName
+            UserName = dto.UserName,
+            Password = dto.Password,
+            Role = dto.Role
         };
     
         User created = await userDao.CreateAsync(toCreate);
     
         return created;
     }
-    
-    private static void ValidateUsernameData(UserCreationDTO userToCreate)
+
+    public async Task<User> ValidateUserAsync(UserLoginDTO dto)
+    {
+        User? existingUser = await userDao.GetByUsernameAsync(dto.Username);
+        
+        if (existingUser == null)
+        {
+            throw new Exception("User not found");
+        }
+
+        if (!existingUser.Password.Equals(dto.Password))
+        {
+            throw new Exception("Password mismatch");
+        }
+
+        return await Task.FromResult(existingUser);
+    }
+
+    private static void ValidateRegistrationData(UserCreationDTO userToCreate)
     {
         string userName = userToCreate.UserName;
+        string password = userToCreate.Password;
 
         if (userName.Length < 3)
             throw new Exception("Username must be at least 3 characters!");
 
         if (userName.Length > 15)
             throw new Exception("Username must be less than 16 characters!");
+        if (password.Length < 3)
+            throw new Exception("Password must be at least 3 characters!");
+
+        if (password.Length > 15)
+            throw new Exception("Password must be less than 16 characters!");
     }
     public Task<IEnumerable<User>> GetAsync(SearchUserParameterDTO searchParameters)
     {
