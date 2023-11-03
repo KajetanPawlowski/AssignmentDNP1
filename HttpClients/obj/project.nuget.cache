@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "qhjZB8Qa3To72rDdI/KCjcS1tyUW2YvDfiPKFaL+IWWAbydPIAg9JJpx4dx4C6ZHqQ1r3JGpvEFOVC+N34bFXQ==",
+  "dgSpecHash": "tU2vY0LA8I1xMCMySdjHPjdUZd8b/tN7yz0kfJ0DJsP2tZLQRDOcgJl5fkQ6SAL6bfqwL+Mq3TntYkJe/00A9g==",
   "success": true,
   "projectFilePath": "/Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/HttpClients/HttpClients.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/kajetanp/.nuget/packages/microsoft.aspnetcore.authorization/7.0.13/microsoft.aspnetcore.authorization.7.0.13.nupkg.sha512",
+    "/Users/kajetanp/.nuget/packages/microsoft.aspnetcore.metadata/7.0.13/microsoft.aspnetcore.metadata.7.0.13.nupkg.sha512",
+    "/Users/kajetanp/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/7.0.0/microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "/Users/kajetanp/.nuget/packages/microsoft.extensions.logging.abstractions/7.0.1/microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
+    "/Users/kajetanp/.nuget/packages/microsoft.extensions.options/7.0.1/microsoft.extensions.options.7.0.1.nupkg.sha512",
+    "/Users/kajetanp/.nuget/packages/microsoft.extensions.primitives/7.0.0/microsoft.extensions.primitives.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

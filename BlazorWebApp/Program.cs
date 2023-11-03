@@ -1,4 +1,9 @@
+using BlazorWebApp.Auth;
+using Domain.Auth;
+using HttpClients.Implementations;
+using HttpClients.Interfaces;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +11,20 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+
+//From Domain
+AuthorizationPolicies.AddPolicies(builder.Services);
+
+//HTTP CLient
+builder.Services.AddScoped(
+    sp =>
+        new HttpClient
+        {
+            BaseAddress = new Uri("http://localhost:5273")
+        }
+);
+builder.Services.AddScoped<IAuthHttpClient, JwtAuthClient>();
+builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthProvider>();
 
 var app = builder.Build();
 
