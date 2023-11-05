@@ -5,15 +5,13 @@
 
 <AuthorizeView>
     <NotAuthorized>
-        <div class="card">
+        <div class="card login">
             <h3> Please login </h3>
             <div class="field">
-                <label>User name:</label>
-                <input type="text" @bind="userName"/>
+                <input class="input-field" type="text" placeholder="Username" @bind="userName"/>
             </div>
             <div class="field">
-                <label style="text-align: center">Password:</label>
-                <input type="password" @bind="password"/>
+                <input class="input-field" type="password" placeholder="Password" @bind="password"/>
             </div>
             @if (!string.IsNullOrEmpty(errorLabel))
             {
@@ -24,7 +22,7 @@
                 </div>
             }
             <div class="field">
-                <button class="loginbtn" @onclick="LoginAsync">Log in</button>
+                <button class=" input-field loginBtn" @onclick="LoginAsync">Log in</button>
             </div>
         </div>
     </NotAuthorized>

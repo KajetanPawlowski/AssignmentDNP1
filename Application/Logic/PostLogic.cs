@@ -51,9 +51,9 @@ public class PostLogic: IPostLogic
 
     private static void ValidatePostBody(string body)
     {
-        if(body.Length > 350)
+        if(body.Length > 5000)
         {
-            throw new Exception("Post can be maximum 350 characters");
+            throw new Exception("Post can be maximum 5000 characters");
         }
     }
     

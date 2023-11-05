@@ -23,6 +23,18 @@
       "UserName": "natalia",
       "Password": "pass",
       "Role": "admin"
+    },
+    {
+      "Id": 4,
+      "UserName": "marek",
+      "Password": "dupa",
+      "Role": "user"
+    },
+    {
+      "Id": 5,
+      "UserName": "ariana",
+      "Password": "1234",
+      "Role": "user"
     }
   ],
   "Posts": [
@@ -46,6 +58,55 @@
       "Username": "kajetan",
       "Body": "Dupa kurwa w konsu dziala",
       "Timestamp": "2023-11-05T18:13:25.210394+01:00"
+    },
+    {
+      "PostId": 3,
+      "Title": "Recent update - admin page :)",
+      "Username": "admin",
+      "Body": "Finally works.",
+      "Timestamp": "2023-11-05T18:51:39.589315+01:00"
+    },
+    {
+      "PostId": 4,
+      "Title": "The Adventure of a Lifetime: Exploring the Amazon Rainforest",
+      "Username": "natalia",
+      "Body": "I embarked on a life-changing adventure, exploring the Amazon Rainforest. The journey was filled with excitement as I immersed in its diverse ecosystem.",
+      "Timestamp": "2023-11-05T20:05:24.301152+01:00"
+    },
+    {
+      "PostId": 5,
+      "Title": "A Journey into the Heart of the Himalayas: Discovering Nature\u0027s Majesty",
+      "Username": "natalia",
+      "Body": "My expedition into the Himalayas was an odyssey that etched its beauty deep into my soul. The title, \u0022A Journey into the Heart of the Himalayas,\u0022 truly captured the essence of the adventure. \nWith each step, I drew closer to nature\u0027s grandeur, spellbound by the majesty of these towering peaks. The journey was a harmonious blend of excitement and awe, taking me into the heart of one of Earth\u0027s most captivating regions.\nAs I ventured into the dense forests, I found myself amidst a symphony of wildlife, from the elusive snow leopards to the melodic songbirds. The fragrance of wildflowers and the crisp mountain air were intoxicating.\n",
+      "Timestamp": "2023-11-05T20:07:30.949702+01:00"
+    },
+    {
+      "PostId": 6,
+      "Title": "A Journey into the Heart of the Himalayas: Discovering Nature\u0027s Majesty",
+      "Username": "natalia",
+      "Body": "My expedition into the Himalayas was an odyssey that etched its beauty deep into my soul. The title, \u0022A Journey into the Heart of the Himalayas,\u0022 truly captured the essence of the adventure. \n\nWith each step, I drew closer to nature\u0027s grandeur, spellbound by the majesty of these towering peaks. The journey was a harmonious blend of excitement and awe, taking me into the heart of one of Earth\u0027s most captivating regions.\n\nAs I ventured into the dense forests, I found myself amidst a symphony of wildlife, from the elusive snow leopards to the melodic songbirds. The fragrance of wildflowers and the crisp mountain air were intoxicating.\n\nDays were spent trekking through pristine landscapes, crossing meandering rivers, and encountering the cultural diversity of the Himalayan communities. I was welcomed with warmth and hospitality, gaining insights into their traditions and way of life.\n\nNights in the Himalayas revealed a celestial spectacle, with stars that seemed within arm\u0027s reach. The stillness of the mountains evoked a sense of serenity, a connection to something greater than myself.\n\nThe Himalayas, however, face challenges, including the impact of climate change. Witnessing these changes reinforced the urgency of conservation efforts and the need to protect this natural wonder.\n\nAs my journey concluded, I found that it had touched not just my senses but also my spirit. The Himalayas\u0027 grandeur remains etched in my heart, a reminder of the magnificence of our planet. It was an odyssey that left me committed to preserving these majestic mountains for generations to come.\n",
+      "Timestamp": "2023-11-05T20:08:25.690361+01:00"
+    },
+    {
+      "PostId": 7,
+      "Title": "Exploring the Enchanted Forest",
+      "Username": "marek",
+      "Body": "In a land far, far away, hidden from the hustle and bustle of modern life, lies an enchanted forest. The moment I set foot in this mystical realm, I knew I was in for an adventure of a lifetime.\n\nThe towering trees formed a majestic canopy, allowing only specks of golden sunlight to filter through. Birds of vibrant plumage filled the air with their melodious songs, and the earth beneath my feet seemed to whisper secrets of ancient times.\n\nAs I ventured deeper into the forest, I stumbled upon a magical waterfall, its crystal-clear waters cascading into a pristine pool. I couldn\u0027t resist the temptation and took a refreshing dip, feeling rejuvenated and alive.\n\nThe forest was alive with mythical creatures. I encountered fairies with wings that glistened like rainbows and mischievous elves playing pranks on one another. It was a world straight out of a fairy tale.\n\nBut the enchantment of the forest extended beyond its inhabitants. Every tree, every flower, and every rock seemed to possess an ethereal quality. I could almost hear the forest breathing, and it filled me with a sense of wonder and reverence for the natural world.\n\nAs I continued my exploration, I stumbled upon an ancient tree with gnarled roots and a wise, old face carved into its bark. The tree spoke to me in a language only my heart could understand, sharing tales of bygone eras and forgotten wisdom.\n\nThe journey through the enchanted forest was a profound experience, a reminder of the magic that still exists in our world. It left me with a deep appreciation for nature\u0027s beauty and an everlasting connection to the enchantment that lies within us all.",
+      "Timestamp": "2023-11-05T21:56:06.815088+01:00"
+    },
+    {
+      "PostId": 8,
+      "Title": "A Night Under the Stars",
+      "Username": "maja",
+      "Body": "There\u0027s something inherently mesmerizing about a night sky filled with stars. It\u0027s as if the universe itself has laid out a cosmic tapestry just for us to gaze upon. On one particularly clear night, I decided to escape the city\u0027s bright lights and head into the wilderness for a night under the stars.\n\nI found the perfect spot, far away from any signs of civilization, where the night sky stretched out in all its glory. As I lay on a comfortable blanket, the world around me faded into darkness, leaving only the celestial wonders above.\n\nThe stars began to twinkle, one by one, gradually revealing themselves as the night deepened. The Milky Way painted a silvery streak across the sky, and constellations I had only seen in books materialized before my eyes.\n\nI marveled at the beauty of the cosmos, the sense of scale it imparts, and the humbling feeling of being a tiny speck in the grand design of the universe. Shooting stars streaked across the sky, leaving ephemeral trails of light as if they were granting wishes to those who gazed upon them.\n\nThe night was alive with nocturnal sounds, from the chirping of crickets to the hooting of owls. It was a symphony of nature that added to the enchantment of the moment.\n\nAs I lay there, I couldn\u0027t help but contemplate life\u0027s mysteries and the infinite possibilities that exist beyond our world. It was a night of introspection and wonder, a reminder of the boundless beauty that surrounds us.\n\nAs dawn broke, and the first rays of sunlight painted the horizon, I felt a deep sense of peace and gratitude. A night under the stars had rekindled my sense of awe for the universe and the interconnectedness of all things. It was a night I would cherish, a night when I felt closer to the cosmos than ever before.",
+      "Timestamp": "2023-11-05T22:02:07.564485+01:00"
+    },
+    {
+      "PostId": 9,
+      "Title": "Kajetan is the best",
+      "Username": "ariana",
+      "Body": "Now we need to do all those stupid diagrams that no one wants  \n\nCreating diagrams can be a tedious task, but they play a crucial role in visualizing complex data and concepts, making information more accessible and understandable. Whether it\u0027s flowcharts, pie charts, or graphs, diagrams are a valuable tool for conveying information effectively. So, let\u0027s dive into the world of diagrams and explore their importance in communication and problem-solving.",
+      "Timestamp": "2023-11-05T22:08:36.595297+01:00"
     }
   ]
 }

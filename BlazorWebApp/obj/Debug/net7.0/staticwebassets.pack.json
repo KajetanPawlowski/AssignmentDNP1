@@ -53,6 +53,10 @@
       "PackagePath": "staticwebassets/css/site.css"
     },
     {
+      "Id": "/Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/BlazorWebApp/wwwroot/css/styles.css",
+      "PackagePath": "staticwebassets/css/styles.css"
+    },
+    {
       "Id": "/Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/BlazorWebApp/wwwroot/favicon.png",
       "PackagePath": "staticwebassets/favicon.png"
     },

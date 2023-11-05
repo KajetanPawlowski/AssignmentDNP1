@@ -3,33 +3,17 @@
 @inject IPostHttpClient PostHttpClient
 @inject NavigationManager navMgr
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Gossip's Dungeon</PageTitle>
 <AuthorizeView>
     <NotAuthorized>
-        @if (posts == null)
-                {
-                    <p>Loading posts....</p>
-                }
-                else if (!posts.Any())
-                {
-                    <p>No Posts to display</p>
-                }
-                else
-                {
-                    @foreach (var post in posts)
-                    {
-                        <Post ForDisplay="post"/>
-                    }
-                }
-    </NotAuthorized>
-    <Authorized>
+        <h3> See Recent Posts: </h3>
         @if (posts == null)
         {
-            <p>Loading posts....</p>
+            <div class="card">Loading posts....</div>
         }
         else if (!posts.Any())
         {
-            <p>No Posts to display</p>
+            <div class="card">No Posts to display</div>
         }
         else
         {
@@ -38,22 +22,91 @@
                 <Post ForDisplay="post"/>
             }
         }
-        
+    </NotAuthorized>
+    <Authorized>
+        <div class="feed-buttons">
+            <button class="feed-option @generalFocused" onclick="@showGeneral">General Feed</button>
+            <button class="feed-option @personalFocused" onclick="@showPersonal">My Posts</button>
+        </div>
+        @if (posts == null)
+        {
+            <div class="card">Loading posts....</div>
+        }
+        else if (!posts.Any())
+        {
+            <div class="card">No Posts to display</div>
+        }
+        else
+        {
+            @foreach (var post in posts)
+            {
+                <Post ForDisplay="post"/>
+            }
+        }
+
     </Authorized>
 </AuthorizeView>
 
 @code
 {
     List<Domain.Model.Post> posts = null;
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    private bool showingPersonal = false;
+    private string username = "";
+    private string generalFocused = "highlight";
+    private string personalFocused = "";
     protected override async Task OnInitializedAsync()
+    {
+        await LoadUsername();
+        await LoadPosts();
+
+    }
+    private async Task showGeneral()
+    {
+        showingPersonal = false;
+        generalFocused = "highlight";
+        personalFocused = "";
+        await LoadPosts();
+        StateHasChanged();
+    }
+    private async Task showPersonal()
+    {
+        showingPersonal = true;
+        generalFocused = "";
+        personalFocused = "highlight";
+        await LoadPosts();
+        StateHasChanged();
+    }
+
+    private async Task LoadPosts()
     {
         try
         {
-            posts = await PostHttpClient.GetPostsAsync();
+            if (showingPersonal)
+            {
+                posts = await PostHttpClient.GetUserPostsAsync(username);
+            }
+            else
+            {
+                posts = await PostHttpClient.GetPostsAsync();
+            }
         }
         catch (Exception e)
         {   
             Console.WriteLine(e);
+        }
+    }
+
+    private async Task LoadUsername()
+    {
+        var authenticationState = await authenticationStateTask;
+        var user = authenticationState.User;
+
+        if (user.Identity!= null)
+        {
+            username = user.Identity.Name;
         }
     }
 }

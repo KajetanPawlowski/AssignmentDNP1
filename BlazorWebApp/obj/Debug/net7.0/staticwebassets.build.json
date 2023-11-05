@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8Xogrj73BPQ6hSUM13AJdO6SiRFFS4pWe6DZmO9haZY=",
+  "Hash": "HkE7Jfyj7lv/w8svr4zioEDvYAFtwV6KVzbIxL6y4xI=",
   "Source": "BlazorWebApp",
   "BasePath": "_content/BlazorWebApp",
   "Mode": "Default",
@@ -253,6 +253,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/site.css"
+    },
+    {
+      "Identity": "/Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/BlazorWebApp/wwwroot/css/styles.css",
+      "SourceId": "BlazorWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/BlazorWebApp/wwwroot/",
+      "BasePath": "_content/BlazorWebApp",
+      "RelativePath": "css/styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/styles.css"
     },
     {
       "Identity": "/Users/kajetanp/Documents/VIA GBE/VIA_#7/DNP1/AssignmentDNP/BlazorWebApp/wwwroot/favicon.png",

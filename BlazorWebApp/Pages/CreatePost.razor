@@ -10,20 +10,19 @@
     </NotAuthorized>
     <Authorized>
         <div class="card">
-            <h3>Write a post</h3>
-            <div class="form-group title-field">
-                <input type="text" placeholder="Title" @bind="Title">
+            <h3 class="field">Write a post</h3>
+            <div class="form-group">
+                <input class="title-field input-field post-card" type="text" placeholder="Title" @bind="Title">
             </div>
-            <div class="form-group body-field">
-                <input type="text" placeholder="Share your thoughts" @bind="Body">
+            <div class="form-group">
+                <textarea class="body-field input-field post-card" type="text" placeholder="Share your thoughts" @bind="Body" rows="10"></textarea>
             </div>
-            <div class="button-row">
+            <div class="form-group">
                 @if (!string.IsNullOrEmpty(resultMsg))
                 {
                     <label style="color: @color">@resultMsg</label>
                 }
-                <br/>
-                <button @onclick="Create" class="acceptbtn genericbtn">Create</button>
+                <button @onclick="Create" class="createBtn">Create</button>
             </div>
         </div>
 

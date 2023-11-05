@@ -2,12 +2,7 @@
 
 public class SearchPostParameterDTO
 {
-    public string? UserName { get;}
-    public string? TitleContent { get;}
+    public string? UserName { get; init; }
+    public string? TitleContent { get; init; }
     
-    public SearchPostParameterDTO(string? userName, string? titleContent)
-    {
-        UserName = userName;
-        TitleContent = titleContent;
-    }
 }

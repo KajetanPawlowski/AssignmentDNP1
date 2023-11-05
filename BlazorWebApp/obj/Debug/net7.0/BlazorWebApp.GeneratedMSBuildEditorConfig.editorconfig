@@ -20,8 +20,28 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/kajetanp/Documents/VIA GBE/VIA_\#7/DNP1/AssignmentDNP/BlazorWebApp/Pages/About.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWJvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kajetanp/Documents/VIA GBE/VIA_\#7/DNP1/AssignmentDNP/BlazorWebApp/Pages/CreatePost.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ3JlYXRlUG9zdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/kajetanp/Documents/VIA GBE/VIA_\#7/DNP1/AssignmentDNP/BlazorWebApp/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kajetanp/Documents/VIA GBE/VIA_\#7/DNP1/AssignmentDNP/BlazorWebApp/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kajetanp/Documents/VIA GBE/VIA_\#7/DNP1/AssignmentDNP/BlazorWebApp/Pages/Post.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUG9zdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kajetanp/Documents/VIA GBE/VIA_\#7/DNP1/AssignmentDNP/BlazorWebApp/Pages/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVnaXN0ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/kajetanp/Documents/VIA GBE/VIA_\#7/DNP1/AssignmentDNP/BlazorWebApp/Pages/ViewUsers.razor]
@@ -39,22 +59,6 @@ build_metadata.AdditionalFiles.CssScope =
 [/Users/kajetanp/Documents/VIA GBE/VIA_\#7/DNP1/AssignmentDNP/BlazorWebApp/Pages/AdminButtons.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRtaW5CdXR0b25zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-ksyjew96k5
-
-[/Users/kajetanp/Documents/VIA GBE/VIA_\#7/DNP1/AssignmentDNP/BlazorWebApp/Pages/CreatePost.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ3JlYXRlUG9zdC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-h2ug4kemqp
-
-[/Users/kajetanp/Documents/VIA GBE/VIA_\#7/DNP1/AssignmentDNP/BlazorWebApp/Pages/Login.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW4ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-nk725u0v2b
-
-[/Users/kajetanp/Documents/VIA GBE/VIA_\#7/DNP1/AssignmentDNP/BlazorWebApp/Pages/Post.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUG9zdC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-rr9ztimdz9
-
-[/Users/kajetanp/Documents/VIA GBE/VIA_\#7/DNP1/AssignmentDNP/BlazorWebApp/Pages/Register.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVnaXN0ZXIucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-y3qdlzj3xk
 
 [/Users/kajetanp/Documents/VIA GBE/VIA_\#7/DNP1/AssignmentDNP/BlazorWebApp/Shared/LoginButtons.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0xvZ2luQnV0dG9ucy5yYXpvcg==

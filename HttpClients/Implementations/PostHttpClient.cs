@@ -58,4 +58,42 @@ public class PostHttpClient : IPostHttpClient
         posts.Reverse();
         return posts;
     }
+
+    public async Task<List<Post>> GetUserPostsAsync(string username)
+    {
+        SearchPostParameterDTO dto = new()
+        {
+            UserName = username
+        };
+        string uri = "/Post";
+        string query = ConstructQuery(dto);
+        HttpResponseMessage response = await client.GetAsync(uri+query);
+        string result = await response.Content.ReadAsStringAsync();
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new Exception(result);
+        }
+
+        List<Post> posts = JsonSerializer.Deserialize<List<Post>>(result, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        })!;
+        posts.Reverse();
+        return posts;
+    }
+    private static string ConstructQuery(SearchPostParameterDTO dto)
+    {
+        string query = "";
+        if (!string.IsNullOrEmpty(dto.UserName))
+        {
+            query += $"?userName={dto.UserName}";
+        }
+        if (!string.IsNullOrEmpty(dto.TitleContent))
+        {
+            query += string.IsNullOrEmpty(query) ? "?" : "&";
+            query += $"titleContent={dto.TitleContent}";
+        }
+
+        return query;
+    }
 }

@@ -40,7 +40,11 @@ public class PostController : ControllerBase
     {
         try
         {
-            SearchPostParameterDTO parameters = new(userName, titleContent);
+            SearchPostParameterDTO parameters = new()
+            {
+                UserName = userName,
+                TitleContent = titleContent
+            };
             IEnumerable<Post> posts= await postLogic.GetAsync(parameters);
             return Ok(posts);
         }
