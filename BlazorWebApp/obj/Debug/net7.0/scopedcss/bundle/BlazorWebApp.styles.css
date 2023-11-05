@@ -1,3 +1,73 @@
+/* _content/BlazorWebApp/Pages/AdminButtons.razor.rz.scp.css */
+.icon[b-ksyjew96k5] {
+    width: 30px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.adminButtons[b-ksyjew96k5]{
+    float: left;
+}
+/* _content/BlazorWebApp/Pages/CreatePost.razor.rz.scp.css */
+
+.card[b-h2ug4kemqp] {
+    background: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    width: 80%; /* Wider card */
+    margin: 0 auto;
+}
+
+/* Style for the card title */
+.card h3[b-h2ug4kemqp] {
+    color: #000;
+    font-size: 20px;
+}
+
+/* Style for input fields */
+.form-group[b-h2ug4kemqp]{
+    margin: 10px 0;
+}
+
+.form-group input[type="text"][b-h2ug4kemqp] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Rounded corners for input fields */
+}
+.form-group.body-field input[type="text"][b-h2ug4kemqp] {
+    width: 100%;
+    height: 250px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Rounded corners for input fields */
+}
+
+/* Style for the button */
+.button-row[b-h2ug4kemqp] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-row label[b-h2ug4kemqp] {
+    color: #FF1493;
+}
+
+.button-row button[b-h2ug4kemqp] {
+    background-color: #FF1493;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-row button:hover[b-h2ug4kemqp] {
+    background-color: #FF1168; /* A slightly darker shade for hover effect */
+}
 /* _content/BlazorWebApp/Pages/Login.razor.rz.scp.css */
 .card[b-nk725u0v2b] {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -26,31 +96,50 @@
     box-shadow: 0 2px 10px 2px #3f3f3f;
 }
 /* _content/BlazorWebApp/Pages/Post.razor.rz.scp.css */
-/* Style the post container */
-.post-box[b-rr9ztimdz9] {
+
+    /* Style for the card container and input fields */
+.card[b-rr9ztimdz9], .post-box[b-rr9ztimdz9] {
+    background: #ffffff;
     border: 1px solid #ccc;
-    background-color: #fff;
-    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    margin: 20px;
+}
+
+/* Style for the card title and post title */
+.card h3[b-rr9ztimdz9], .post-box .title-field[b-rr9ztimdz9] {
+    color: #000;
+    font-size: 20px;
+}
+
+/* Style for input fields and post body */
+.form-group.field input[type="text"][b-rr9ztimdz9], .post-box .post-body[b-rr9ztimdz9] {
+    width: 100%;
     padding: 10px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border: 1px solid #ccc;
+    border-radius: 10px;
 }
 
-/* Style the username field */
-.username-field[b-rr9ztimdz9] {
-    font-weight: bold;
-    color: #0079D3; /* Reddit blue */
+/* Style for the button */
+.button-row button[b-rr9ztimdz9], .post-box .button-row button[b-rr9ztimdz9] {
+    background-color: #FF1493;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-/* Style the title field */
-.title-field[b-rr9ztimdz9] {
-    font-size: 18px;
-    margin: 10px 0;
+.button-row button:hover[b-rr9ztimdz9], .post-box .button-row button:hover[b-rr9ztimdz9] {
+    background-color: #FF1168; /* A slightly darker shade for hover effect */
 }
 
-/* Style the post body */
-.post-body[b-rr9ztimdz9] {
-    font-size: 16px;
-    line-height: 1.4;
+/* Style for the username and timestamp in blue */
+.post-box .username-field[b-rr9ztimdz9] {
+    color: royalblue;
 }
 /* _content/BlazorWebApp/Pages/Register.razor.rz.scp.css */
 .card[b-y3qdlzj3xk] {

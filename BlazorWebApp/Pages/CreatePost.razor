@@ -9,13 +9,12 @@
         <h3>Log in to see more</h3>
     </NotAuthorized>
     <Authorized>
-        <span>@context.User.Identity.Name</span>
         <div class="card">
             <h3>Write a post</h3>
-            <div class="form-group field">
+            <div class="form-group title-field">
                 <input type="text" placeholder="Title" @bind="Title">
             </div>
-            <div class="form-group field">
+            <div class="form-group body-field">
                 <input type="text" placeholder="Share your thoughts" @bind="Body">
             </div>
             <div class="button-row">

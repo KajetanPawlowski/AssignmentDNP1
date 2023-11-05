@@ -25,6 +25,7 @@ builder.Services.AddScoped(
 );
 builder.Services.AddScoped<IAuthHttpClient, JwtAuthClient>();
 builder.Services.AddScoped<IPostHttpClient, PostHttpClient>();
+builder.Services.AddScoped<IUserHttpClient, UserHttpClient>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthProvider>();
 
 var app = builder.Build();

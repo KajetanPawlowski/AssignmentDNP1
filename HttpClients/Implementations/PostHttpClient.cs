@@ -11,7 +11,6 @@ namespace HttpClients.Implementations;
 public class PostHttpClient : IPostHttpClient
 {
     private readonly HttpClient client;
-    
 
     public PostHttpClient(HttpClient client)
     {

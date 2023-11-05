@@ -11,26 +11,41 @@
       "UserName": "kajetan",
       "Password": "pass",
       "Role": "user"
+    },
+    {
+      "Id": 2,
+      "UserName": "maja",
+      "Password": "pass",
+      "Role": "user"
+    },
+    {
+      "Id": 3,
+      "UserName": "natalia",
+      "Password": "pass",
+      "Role": "admin"
     }
   ],
   "Posts": [
     {
       "PostId": 0,
-      "Title": "Hello There - first post",
-      "Username": "admin",
-      "Body": "Wow this place is awsome - have you seen the pink on the side!!!"
+      "Title": "New Post",
+      "Username": "natalia",
+      "Body": "Hello Everybody! this is my first post ever! Are you excited?",
+      "Timestamp": "2023-11-05T17:59:32.16682+01:00"
     },
     {
       "PostId": 1,
-      "Title": "hemm",
-      "Username": "admin",
-      "Body": "wroking now?"
+      "Title": "Hello This is my second post",
+      "Username": "natalia",
+      "Body": "very excited to write more about the experiance",
+      "Timestamp": "2023-11-05T18:08:06.651486+01:00"
     },
     {
       "PostId": 2,
-      "Title": "Hello Everyone",
+      "Title": "hehehehehehhe",
       "Username": "kajetan",
-      "Body": "this is the first post i write here"
+      "Body": "Dupa kurwa w konsu dziala",
+      "Timestamp": "2023-11-05T18:13:25.210394+01:00"
     }
   ]
 }

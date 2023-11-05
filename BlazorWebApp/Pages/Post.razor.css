@@ -1,26 +1,45 @@
-/* Style the post container */
-.post-box {
+
+    /* Style for the card container and input fields */
+.card, .post-box {
+    background: #ffffff;
     border: 1px solid #ccc;
-    background-color: #fff;
-    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    margin: 20px;
+}
+
+/* Style for the card title and post title */
+.card h3, .post-box .title-field {
+    color: #000;
+    font-size: 20px;
+}
+
+/* Style for input fields and post body */
+.form-group.field input[type="text"], .post-box .post-body {
+    width: 100%;
     padding: 10px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border: 1px solid #ccc;
+    border-radius: 10px;
 }
 
-/* Style the username field */
-.username-field {
-    font-weight: bold;
-    color: #0079D3; /* Reddit blue */
+/* Style for the button */
+.button-row button, .post-box .button-row button {
+    background-color: #FF1493;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-/* Style the title field */
-.title-field {
-    font-size: 18px;
-    margin: 10px 0;
+.button-row button:hover, .post-box .button-row button:hover {
+    background-color: #FF1168; /* A slightly darker shade for hover effect */
 }
 
-/* Style the post body */
-.post-body {
-    font-size: 16px;
-    line-height: 1.4;
+/* Style for the username and timestamp in blue */
+.post-box .username-field {
+    color: royalblue;
 }
