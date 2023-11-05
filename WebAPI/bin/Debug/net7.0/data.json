@@ -5,14 +5,13 @@
       "UserName": "admin",
       "Password": "admin",
       "Role": "admin"
+    },
+    {
+      "Id": 1,
+      "UserName": "kajetan",
+      "Password": "pass",
+      "Role": "user"
     }
   ],
-  "Posts": [
-    {
-      "PostId": 0,
-      "Title": "Hello There - first post",
-      "Username": "admin",
-      "Body": "Wow this place is awsome - have you seen the pink on the side!!!"
-    }
-  ]
+  "Posts": []
 }

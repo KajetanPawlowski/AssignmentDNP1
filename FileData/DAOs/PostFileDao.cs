@@ -22,6 +22,7 @@ public class PostFileDao : IPostDAO
         }
 
         post.PostId = postId;
+        post.Timestamp = DateTime.Now;
 
         context.Posts.Add(post);
         context.SaveChanges();
@@ -62,6 +63,8 @@ public class PostFileDao : IPostDAO
         {
             existing.Body = dto.NewBody;
         }
+
+        existing.Timestamp = DateTime.Now;
         
         context.SaveChanges();
         

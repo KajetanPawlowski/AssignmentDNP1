@@ -6,7 +6,21 @@
 <PageTitle>Index</PageTitle>
 <AuthorizeView>
     <NotAuthorized>
-        <h3>Log in to see more</h3>
+        @if (posts == null)
+                {
+                    <p>Loading posts....</p>
+                }
+                else if (!posts.Any())
+                {
+                    <p>No Posts to display</p>
+                }
+                else
+                {
+                    @foreach (var post in posts)
+                    {
+                        <Post ForDisplay="post"/>
+                    }
+                }
     </NotAuthorized>
     <Authorized>
         @if (posts == null)

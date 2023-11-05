@@ -8,6 +8,7 @@ public class Post
     public string Username { get; set; }
     public string Body { get; set; }
     
+    public DateTime Timestamp { get; set; }
     public Post(string username, string title, string body)
     {
         Username = username;

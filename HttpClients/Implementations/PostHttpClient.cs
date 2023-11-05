@@ -56,6 +56,7 @@ public class PostHttpClient : IPostHttpClient
         {
             PropertyNameCaseInsensitive = true
         })!;
+        posts.Reverse();
         return posts;
     }
 }

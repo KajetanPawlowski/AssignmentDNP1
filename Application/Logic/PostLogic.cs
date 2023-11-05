@@ -92,7 +92,7 @@ public class PostLogic: IPostLogic
             throw new Exception($"Post with id {id} not found");
         }
 
-        return new PostBasicDTO(post.Title, post.Username, post.PostId, post.Body);
+        return new PostBasicDTO(post.Title, post.Username, post.PostId, post.Body, post.Timestamp);
     }
 
     public async Task DeleteAsync(int id)

@@ -83,6 +83,10 @@
 .icon[b-0e3ibyubb4] {
     width: 30px;
     cursor: pointer;
+    margin-left: 10px;
+}
+span[b-0e3ibyubb4]{
+    cursor: pointer;
 }
 /* _content/BlazorWebApp/Shared/MainLayout.razor.rz.scp.css */
 .page[b-bnpfhfz7g2] {

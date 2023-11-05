@@ -7,11 +7,13 @@ public class PostBasicDTO
     public string? Title { get; }
     public string? Body { get; }
     
-    public PostBasicDTO(string? title, string? userName, int postId, string? body)
+    public DateTime Timestamp { get; set; }
+    public PostBasicDTO(string? title, string? userName, int postId, string? body, DateTime dateTime)
     {
         Title = title;
         UserName = userName;
         PostId = postId;
         Body = body;
+        Timestamp = dateTime;
     }
 }
