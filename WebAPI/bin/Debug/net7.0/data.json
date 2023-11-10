@@ -7,12 +7,6 @@
       "Role": "admin"
     },
     {
-      "Id": 1,
-      "UserName": "kajetan",
-      "Password": "pass",
-      "Role": "user"
-    },
-    {
       "Id": 2,
       "UserName": "maja",
       "Password": "pass",
@@ -22,7 +16,7 @@
       "Id": 3,
       "UserName": "natalia",
       "Password": "pass",
-      "Role": "admin"
+      "Role": "user"
     },
     {
       "Id": 4,
@@ -59,6 +53,12 @@
       "UserName": "alice",
       "Password": "pass",
       "Role": "user"
+    },
+    {
+      "Id": 10,
+      "UserName": "nicole",
+      "Password": "nicole",
+      "Role": "user"
     }
   ],
   "Posts": [
@@ -75,13 +75,6 @@
       "Username": "natalia",
       "Body": "very excited to write more about the experiance",
       "Timestamp": "2023-11-05T18:08:06.651486+01:00"
-    },
-    {
-      "PostId": 2,
-      "Title": "hehehehehehhe",
-      "Username": "kajetan",
-      "Body": "Dupa kurwa w konsu dziala",
-      "Timestamp": "2023-11-05T18:13:25.210394+01:00"
     },
     {
       "PostId": 3,
@@ -161,11 +154,11 @@
       "Timestamp": "2023-11-09T11:48:44.929302+01:00"
     },
     {
-      "PostId": 14,
-      "Title": "Ariana can not see it",
-      "Username": "kajetan",
-      "Body": "heheheh",
-      "Timestamp": "2023-11-09T11:51:01.452737+01:00"
+      "PostId": 15,
+      "Title": "Kachow",
+      "Username": "nicole",
+      "Body": "Cars is the best movie to ever exist\nKachow \u26A1\uFE0F",
+      "Timestamp": "2023-11-10T09:50:25.669439+01:00"
     }
   ]
 }

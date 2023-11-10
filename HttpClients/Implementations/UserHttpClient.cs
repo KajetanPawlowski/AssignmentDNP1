@@ -62,4 +62,19 @@ public class UserHttpClient : IUserHttpClient
             throw new Exception(response +"");
         }
     }
+
+    public async Task RemoveUser(string username)
+    {
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authHttpClient.Jwt);
+        
+        string uri = "/User?username=";
+        string query = username;
+        HttpResponseMessage response = await client.DeleteAsync(uri+query);
+        string result = await response.Content.ReadAsStringAsync();
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new Exception(result);
+        }
+
+    }
 }

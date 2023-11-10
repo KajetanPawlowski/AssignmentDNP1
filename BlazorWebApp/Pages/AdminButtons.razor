@@ -6,7 +6,7 @@
 <div class="adminButtons">
     <span style="color: @color" class="icon oi oi-person" title="Make admin" @onclick="() => ChangeRole(user)"></span>
     <span class="icon oi oi-pencil" title="Edit"></span>
-    <span class="icon oi oi-trash" title="Delete User"></span>
+    <span class="icon oi oi-trash" title="Delete User" @onclick="() => RemoveUser(user)"></span>
 </div>
 
 @code {
@@ -30,6 +30,13 @@
         //opposite colour 
         color = user.Role.Equals("admin") ? "black" : "#FF1493";
         await userHttpClient.ChangeRoleAsync(user.UserName, isAdmin);
+
+        await OnRoleChanged.InvokeAsync(null);
+    }
+    private async Task RemoveUser(User user)
+    {
+        Console.WriteLine("Remove user: " + user.UserName);
+        await userHttpClient.RemoveUser(user.UserName);
 
         await OnRoleChanged.InvokeAsync(null);
     }

@@ -30,6 +30,19 @@ public class UserFileDao : IUserDAO
         return Task.FromResult(user);
     }
 
+    public Task DeleteAsync(string username)
+    {
+        User? existing = context.Users.FirstOrDefault(u =>
+            u.UserName.Equals(username, StringComparison.OrdinalIgnoreCase)
+        );
+        if(existing != null )
+        {
+            context.Users.Remove(existing);
+            context.SaveChanges();
+        }
+        return Task.CompletedTask;
+    }
+
     public Task<User> AssignRoleAsync(AssignRoleDTO dto)
     {
         User? existing = context.Users.FirstOrDefault(u =>

@@ -1,3 +1,4 @@
+using System.Collections;
 using Application.DAOInterfaces;
 using Application.LogicInterfaces;
 using Domain.DTOs;
@@ -8,10 +9,12 @@ namespace Application.Logic;
 public class UserLogic :IUserLogic
 {
     private readonly IUserDAO userDao;
+    private readonly IPostDAO postDao;
 
-    public UserLogic(IUserDAO userDao)
+    public UserLogic(IUserDAO userDao, IPostDAO postDao)
     {
         this.userDao = userDao;
+        this.postDao = postDao;
     }
     public async Task<User> RegisterUserAsync(UserLoginDTO dto)
     {
@@ -30,6 +33,29 @@ public class UserLogic :IUserLogic
         User created = await userDao.CreateAsync(toCreate);
     
         return created;
+    }
+
+    public async Task DeleteUserAsync(string username)
+    {
+        User? existingUser = await userDao.GetByUsernameAsync(username);
+        
+        if (existingUser == null)
+        {
+            throw new Exception("User not found");
+        }
+
+        SearchPostParameterDTO findUserPosts = new()
+        {
+            UserName = username
+        };
+        IEnumerable<Post> userPosts = await postDao.GetAsync(findUserPosts);
+        
+        foreach (var userPost in userPosts)
+        {
+            await postDao.DeleteAsync(userPost.PostId);
+        }
+        
+        await userDao.DeleteAsync(username);
     }
 
     public async Task<User> ValidateUserAsync(UserLoginDTO dto)

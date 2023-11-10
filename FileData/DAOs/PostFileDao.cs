@@ -30,20 +30,21 @@ public class PostFileDao : IPostDAO
         return Task.FromResult(post);
     }
 
-    public Task<IEnumerable<Post>> GetAsync(SearchPostParameterDTO searchParameters)
-    {
-        IEnumerable<Post> result = context.Posts.AsEnumerable();
-        
+    public Task<List<Post>> GetAsync(SearchPostParameterDTO searchParameters) 
+    {ICollection<Post> query = context.Posts;
         if (!string.IsNullOrEmpty(searchParameters.UserName))
         {
-            result = context.Posts.Where(post =>
-                post.Username.Equals(searchParameters.UserName, StringComparison.OrdinalIgnoreCase));
+                query = query.Where(post =>
+                    post.Username.Equals(searchParameters.UserName, StringComparison.OrdinalIgnoreCase)).ToList();
         }
+
         if (!string.IsNullOrEmpty(searchParameters.TitleContent))
         {
-            result = context.Posts.Where(post =>
-                post.Title.Contains(searchParameters.TitleContent, StringComparison.OrdinalIgnoreCase));
+            query = query.Where(post =>
+                post.Title.Contains(searchParameters.TitleContent, StringComparison.OrdinalIgnoreCase)).ToList();
         }
+
+        List<Post> result = query.ToList();
 
         return Task.FromResult(result);
     }
