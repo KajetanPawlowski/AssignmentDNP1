@@ -9,8 +9,7 @@ namespace HttpClients.Implementations;
 public class JwtAuthClient : IAuthHttpClient
 {
     private readonly HttpClient client;
-    public static string? Jwt { get; private set; } = "";
-
+    public string? Jwt { get; private set; } = "";
     public JwtAuthClient(HttpClient client)
     {
         this.client = client;
@@ -18,47 +17,10 @@ public class JwtAuthClient : IAuthHttpClient
 
     public Action<ClaimsPrincipal> OnAuthStateChanged { get; set; } = null!;
     
-    // Below methods stolen from https://github.com/SteveSandersonMS/presentation-2019-06-NDCOslo/blob/master/demos/MissionControl/MissionControl.Client/Util/ServiceExtensions.cs
-    private static IEnumerable<Claim> ParseClaimsFromJwt(string jwt)
-    {
-        string payload = jwt.Split('.')[1];
-        byte[] jsonBytes = ParseBase64WithoutPadding(payload);
-        Dictionary<string, object>? keyValuePairs = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonBytes);
-        return keyValuePairs!.Select(kvp => new Claim(kvp.Key, kvp.Value.ToString()!));
-    }
-
-    private static byte[] ParseBase64WithoutPadding(string base64)
-    {
-        switch (base64.Length % 4)
-        {
-            case 2:
-                base64 += "==";
-                break;
-            case 3:
-                base64 += "=";
-                break;
-        }
-
-        return Convert.FromBase64String(base64);
-    }
-    
-    private static ClaimsPrincipal CreateClaimsPrincipal()
-    {
-        if (string.IsNullOrEmpty(Jwt))
-        {
-            return new ClaimsPrincipal();
-        }
-
-        IEnumerable<Claim> claims = ParseClaimsFromJwt(Jwt);
-    
-        ClaimsIdentity identity = new(claims, "jwt");
-
-        ClaimsPrincipal principal = new(identity);
-        return principal;
-    }
     
     public async Task LoginAsync(string username, string password)
     {
+        
         UserLoginDTO dto = new()
         {
             Username = username,
@@ -81,11 +43,12 @@ public class JwtAuthClient : IAuthHttpClient
         ClaimsPrincipal principal = CreateClaimsPrincipal();
 
         OnAuthStateChanged.Invoke(principal);
+        
     }
 
-    public Task LogoutAsync()
+    public Task LogoutAsync(string username)
     {
-        Jwt = null;
+        //Jwt = null;
         ClaimsPrincipal principal = new();
         OnAuthStateChanged.Invoke(principal);
         return Task.CompletedTask;
@@ -115,5 +78,45 @@ public class JwtAuthClient : IAuthHttpClient
         ClaimsPrincipal principal = CreateClaimsPrincipal();
         return Task.FromResult(principal);
     }
+
+    private ClaimsPrincipal CreateClaimsPrincipal()
+    {
+        if (string.IsNullOrEmpty(Jwt))
+        {
+            return new ClaimsPrincipal();
+        }
+
+        IEnumerable<Claim> claims = ParseClaimsFromJwt(Jwt);
+
+        ClaimsIdentity identity = new(claims, "jwt");
+
+        ClaimsPrincipal principal = new(identity);
+        return principal;
+    }
+
+    // Below methods stolen from https://github.com/SteveSandersonMS/presentation-2019-06-NDCOslo/blob/master/demos/MissionControl/MissionControl.Client/Util/ServiceExtensions.cs
+    private static IEnumerable<Claim> ParseClaimsFromJwt(string jwt)
+    {
+        string payload = jwt.Split('.')[1];
+        byte[] jsonBytes = ParseBase64WithoutPadding(payload);
+        Dictionary<string, object>? keyValuePairs = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonBytes);
+        return keyValuePairs!.Select(kvp => new Claim(kvp.Key, kvp.Value.ToString()!));
+    }
+
+    private static byte[] ParseBase64WithoutPadding(string base64)
+    {
+        switch (base64.Length % 4)
+        {
+            case 2:
+                base64 += "==";
+                break;
+            case 3:
+                base64 += "=";
+                break;
+        }
+
+        return Convert.FromBase64String(base64);
+    }
+
 
 }

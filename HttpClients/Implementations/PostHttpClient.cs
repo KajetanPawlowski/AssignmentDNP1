@@ -1,5 +1,6 @@
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 using Domain.DTOs;
@@ -11,10 +12,12 @@ namespace HttpClients.Implementations;
 public class PostHttpClient : IPostHttpClient
 {
     private readonly HttpClient client;
+    private readonly IAuthHttpClient authHttpClient;
 
-    public PostHttpClient(HttpClient client)
+    public PostHttpClient(HttpClient client,  IAuthHttpClient authHttpClient)
     {
         this.client = client;
+        this.authHttpClient = authHttpClient;
     }
     public async Task AddPost(string username, string title, string body)
     {
@@ -26,7 +29,7 @@ public class PostHttpClient : IPostHttpClient
             Body = body
         };
         
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", JwtAuthClient.Jwt);
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authHttpClient.Jwt);
         
         string dtoAsJson = JsonSerializer.Serialize(dto);
         StringContent content = new(dtoAsJson, Encoding.UTF8, "application/json");
@@ -43,7 +46,6 @@ public class PostHttpClient : IPostHttpClient
 
     public async Task<List<Post>> GetPostsAsync()
     {
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", JwtAuthClient.Jwt);
         HttpResponseMessage response = await client.GetAsync("/Post");
         string result = await response.Content.ReadAsStringAsync();
         if (!response.IsSuccessStatusCode)
@@ -96,4 +98,5 @@ public class PostHttpClient : IPostHttpClient
 
         return query;
     }
+    
 }

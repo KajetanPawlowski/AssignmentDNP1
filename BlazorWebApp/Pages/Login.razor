@@ -1,5 +1,7 @@
 ﻿@page "/Login"
 @using HttpClients.Interfaces
+@using System.Security.Claims
+
 @inject IAuthHttpClient AuthHttpClient
 @inject NavigationManager navMgr
 
@@ -44,6 +46,8 @@
         try
         {
             await AuthHttpClient.LoginAsync(userName, password);
+            // Set the username in the HttpContext after a successful login
+            
             navMgr.NavigateTo("/");
         }
         catch (Exception e)

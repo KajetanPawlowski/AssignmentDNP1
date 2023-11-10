@@ -16,7 +16,7 @@
       "Id": 2,
       "UserName": "maja",
       "Password": "pass",
-      "Role": "user"
+      "Role": "admin"
     },
     {
       "Id": 3,
@@ -34,6 +34,30 @@
       "Id": 5,
       "UserName": "ariana",
       "Password": "1234",
+      "Role": "user"
+    },
+    {
+      "Id": 6,
+      "UserName": "matej",
+      "Password": "pass",
+      "Role": "user"
+    },
+    {
+      "Id": 7,
+      "UserName": "marysia",
+      "Password": "dupa1234",
+      "Role": "user"
+    },
+    {
+      "Id": 8,
+      "UserName": "MaestroPetr",
+      "Password": "dapapico",
+      "Role": "user"
+    },
+    {
+      "Id": 9,
+      "UserName": "alice",
+      "Password": "pass",
       "Role": "user"
     }
   ],
@@ -107,6 +131,41 @@
       "Username": "ariana",
       "Body": "Now we need to do all those stupid diagrams that no one wants  \n\nCreating diagrams can be a tedious task, but they play a crucial role in visualizing complex data and concepts, making information more accessible and understandable. Whether it\u0027s flowcharts, pie charts, or graphs, diagrams are a valuable tool for conveying information effectively. So, let\u0027s dive into the world of diagrams and explore their importance in communication and problem-solving.",
       "Timestamp": "2023-11-05T22:08:36.595297+01:00"
+    },
+    {
+      "PostId": 10,
+      "Title": "This is my opinion on the Barbie movie",
+      "Username": "matej",
+      "Body": "In this movie, Barbie is transported to the Enchanted Forest, a realm filled with talking animals, fairies, and magical creatures. She encounters new friends, including a wise old owl and a mischievous squirrel. Together, they set out on a quest to save the Enchanted Forest from an impending disaster.\n\nThe film\u0027s positive messages about friendship, courage, and environmental conservation are woven seamlessly into the narrative. Barbie\u0027s determination and kindness inspire viewers, teaching valuable life lessons along the way.\n\nThe enchanting visuals are a feast for the eyes, with lush forests, colorful flowers, and sparkling waterfalls. The musical score adds to the movie\u0027s charm, creating an immersive experience for the audience.",
+      "Timestamp": "2023-11-06T17:52:50.077049+01:00"
+    },
+    {
+      "PostId": 11,
+      "Title": "Marysia Joined the Dungeon",
+      "Username": "marysia",
+      "Body": "Hello There!",
+      "Timestamp": "2023-11-07T17:38:58.59856+01:00"
+    },
+    {
+      "PostId": 12,
+      "Title": "I\u0027m here ",
+      "Username": "MaestroPetr",
+      "Body": "Hello bitches I\u0027m here now as well ",
+      "Timestamp": "2023-11-07T17:43:26.32233+01:00"
+    },
+    {
+      "PostId": 13,
+      "Title": "Hello ",
+      "Username": "admin",
+      "Body": "testing",
+      "Timestamp": "2023-11-09T11:48:44.929302+01:00"
+    },
+    {
+      "PostId": 14,
+      "Title": "Ariana can not see it",
+      "Username": "kajetan",
+      "Body": "heheheh",
+      "Timestamp": "2023-11-09T11:51:01.452737+01:00"
     }
   ]
 }

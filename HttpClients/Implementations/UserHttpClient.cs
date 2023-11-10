@@ -1,5 +1,6 @@
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 using Domain.DTOs;
@@ -11,14 +12,16 @@ namespace HttpClients.Implementations;
 public class UserHttpClient : IUserHttpClient
 {
     private readonly HttpClient client;
+    private readonly IAuthHttpClient authHttpClient;
 
-    public UserHttpClient(HttpClient client)
+    public UserHttpClient(HttpClient client, IAuthHttpClient authHttpClient)
     {
         this.client = client;
+        this.authHttpClient = authHttpClient;
     }
     public async Task<List<User>> GetUsersAsync()
     {
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", JwtAuthClient.Jwt);
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authHttpClient.Jwt);
         HttpResponseMessage response = await client.GetAsync("/User");
         string result = await response.Content.ReadAsStringAsync();
         if (!response.IsSuccessStatusCode)
@@ -42,7 +45,7 @@ public class UserHttpClient : IUserHttpClient
                 Role = newRole
             };
         
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", JwtAuthClient.Jwt);
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authHttpClient.Jwt);
         
         // Manually serialize the dto to JSON
         string serializedDto = JsonSerializer.Serialize(dto);

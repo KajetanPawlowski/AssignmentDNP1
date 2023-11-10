@@ -18,7 +18,9 @@
     </NotAuthorized>
 </AuthorizeView>
 @code {
-
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+    
     private void Login()
     {
         navMgr.NavigateTo("/Login");
@@ -26,8 +28,23 @@
 
     private async Task Logout()
     {
-        await authService.LogoutAsync();
+        await authService.LogoutAsync(await LoadUsername());
         navMgr.NavigateTo("/");
+    }
+    private async Task<string> LoadUsername()
+    {
+        var authenticationState = await authenticationStateTask;
+        var user = authenticationState.User;
+
+        if (user.Identity == null)
+        {
+            navMgr.NavigateTo("/");
+        }
+        else if (user.Identity.IsAuthenticated)
+        {
+            return user.Identity.Name;
+        }
+        return null;
     }
 
 }
