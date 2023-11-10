@@ -10,7 +10,7 @@
     position: relative;
 }
 .card.login{
-    width: 40%;
+    
 }
 .card.rolled-up::after {
     content: "";

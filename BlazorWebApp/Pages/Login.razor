@@ -27,6 +27,9 @@
                 <button class=" input-field loginBtn" @onclick="LoginAsync">Log in</button>
             </div>
         </div>
+        <div class="card login">
+            <button class="input-field signInBtn" @onclick="Register">Sign Up</button>
+            </div>
     </NotAuthorized>
     <Authorized>
         <div class="card">
@@ -59,5 +62,10 @@
             Console.WriteLine(e);
             errorLabel = $"Error: {e.Message}";
         }
+    }
+
+    private void Register()
+    {
+        navMgr.NavigateTo("/Register");
     }
 }

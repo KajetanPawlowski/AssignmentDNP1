@@ -7,12 +7,6 @@
       "Role": "admin"
     },
     {
-      "Id": 2,
-      "UserName": "maja",
-      "Password": "pass",
-      "Role": "admin"
-    },
-    {
       "Id": 3,
       "UserName": "natalia",
       "Password": "pass",
@@ -22,12 +16,6 @@
       "Id": 4,
       "UserName": "marek",
       "Password": "dupa",
-      "Role": "user"
-    },
-    {
-      "Id": 5,
-      "UserName": "ariana",
-      "Password": "1234",
       "Role": "user"
     },
     {
@@ -46,12 +34,6 @@
       "Id": 8,
       "UserName": "MaestroPetr",
       "Password": "dapapico",
-      "Role": "user"
-    },
-    {
-      "Id": 9,
-      "UserName": "alice",
-      "Password": "pass",
       "Role": "user"
     },
     {
@@ -75,13 +57,6 @@
       "Username": "natalia",
       "Body": "very excited to write more about the experiance",
       "Timestamp": "2023-11-05T18:08:06.651486+01:00"
-    },
-    {
-      "PostId": 3,
-      "Title": "Recent update - admin page :)",
-      "Username": "admin",
-      "Body": "Finally works.",
-      "Timestamp": "2023-11-05T18:51:39.589315+01:00"
     },
     {
       "PostId": 4,
@@ -112,20 +87,6 @@
       "Timestamp": "2023-11-05T21:56:06.815088+01:00"
     },
     {
-      "PostId": 8,
-      "Title": "A Night Under the Stars",
-      "Username": "maja",
-      "Body": "There\u0027s something inherently mesmerizing about a night sky filled with stars. It\u0027s as if the universe itself has laid out a cosmic tapestry just for us to gaze upon. On one particularly clear night, I decided to escape the city\u0027s bright lights and head into the wilderness for a night under the stars.\n\nI found the perfect spot, far away from any signs of civilization, where the night sky stretched out in all its glory. As I lay on a comfortable blanket, the world around me faded into darkness, leaving only the celestial wonders above.\n\nThe stars began to twinkle, one by one, gradually revealing themselves as the night deepened. The Milky Way painted a silvery streak across the sky, and constellations I had only seen in books materialized before my eyes.\n\nI marveled at the beauty of the cosmos, the sense of scale it imparts, and the humbling feeling of being a tiny speck in the grand design of the universe. Shooting stars streaked across the sky, leaving ephemeral trails of light as if they were granting wishes to those who gazed upon them.\n\nThe night was alive with nocturnal sounds, from the chirping of crickets to the hooting of owls. It was a symphony of nature that added to the enchantment of the moment.\n\nAs I lay there, I couldn\u0027t help but contemplate life\u0027s mysteries and the infinite possibilities that exist beyond our world. It was a night of introspection and wonder, a reminder of the boundless beauty that surrounds us.\n\nAs dawn broke, and the first rays of sunlight painted the horizon, I felt a deep sense of peace and gratitude. A night under the stars had rekindled my sense of awe for the universe and the interconnectedness of all things. It was a night I would cherish, a night when I felt closer to the cosmos than ever before.",
-      "Timestamp": "2023-11-05T22:02:07.564485+01:00"
-    },
-    {
-      "PostId": 9,
-      "Title": "Kajetan is the best",
-      "Username": "ariana",
-      "Body": "Now we need to do all those stupid diagrams that no one wants  \n\nCreating diagrams can be a tedious task, but they play a crucial role in visualizing complex data and concepts, making information more accessible and understandable. Whether it\u0027s flowcharts, pie charts, or graphs, diagrams are a valuable tool for conveying information effectively. So, let\u0027s dive into the world of diagrams and explore their importance in communication and problem-solving.",
-      "Timestamp": "2023-11-05T22:08:36.595297+01:00"
-    },
-    {
       "PostId": 10,
       "Title": "This is my opinion on the Barbie movie",
       "Username": "matej",
@@ -145,13 +106,6 @@
       "Username": "MaestroPetr",
       "Body": "Hello bitches I\u0027m here now as well ",
       "Timestamp": "2023-11-07T17:43:26.32233+01:00"
-    },
-    {
-      "PostId": 13,
-      "Title": "Hello ",
-      "Username": "admin",
-      "Body": "testing",
-      "Timestamp": "2023-11-09T11:48:44.929302+01:00"
     },
     {
       "PostId": 15,
