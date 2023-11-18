@@ -31,7 +31,8 @@ public class PostFileDao : IPostDAO
     }
 
     public Task<List<Post>> GetAsync(SearchPostParameterDTO searchParameters) 
-    {ICollection<Post> query = context.Posts;
+    {
+        ICollection<Post> query = context.Posts;
         if (!string.IsNullOrEmpty(searchParameters.UserName))
         {
                 query = query.Where(post =>

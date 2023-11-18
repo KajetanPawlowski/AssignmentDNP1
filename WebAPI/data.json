@@ -37,15 +37,15 @@
       "Role": "user"
     },
     {
-      "Id": 10,
-      "UserName": "nicole",
-      "Password": "nicole",
-      "Role": "user"
-    },
-    {
       "Id": 11,
       "UserName": "maja",
       "Password": "pass",
+      "Role": "user"
+    },
+    {
+      "Id": 12,
+      "UserName": "ariana",
+      "Password": "pas",
       "Role": "user"
     }
   ],
@@ -114,18 +114,25 @@
       "Timestamp": "2023-11-07T17:43:26.32233+01:00"
     },
     {
-      "PostId": 15,
-      "Title": "Kachow",
-      "Username": "nicole",
-      "Body": "Cars is the best movie to ever exist\nKachow \u26A1\uFE0F",
-      "Timestamp": "2023-11-10T09:50:25.669439+01:00"
-    },
-    {
       "PostId": 16,
       "Title": "New Post \uD83D\uDE1C",
       "Username": "maja",
       "Body": "wow this is a great place for the gossips ",
       "Timestamp": "2023-11-10T10:53:39.602944+01:00"
+    },
+    {
+      "PostId": 17,
+      "Title": "Siem Damian",
+      "Username": "maja",
+      "Body": "Hahahaha",
+      "Timestamp": "2023-11-10T16:10:16.238699+01:00"
+    },
+    {
+      "PostId": 18,
+      "Title": "Alice deleted me",
+      "Username": "ariana",
+      "Body": "Rude",
+      "Timestamp": "2023-11-14T12:13:53.609957+01:00"
     }
   ]
 }

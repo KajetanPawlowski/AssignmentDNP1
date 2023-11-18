@@ -83,7 +83,7 @@ button {
 }
 
 button:hover {
-    background-color: #FF1168; /* A slightly darker shade for hover effect */
+    background-color: #FE1090;
 }
 
 button.signInBtn {
@@ -100,7 +100,7 @@ button.loginBtn {
     padding-right: 10px;
 }
 button.createBtn{
-    background-color: #FF1168;
+    background-color: #FF1493;
     width: 100%;
     padding: 5px;
     padding-left: 10px;
@@ -124,4 +124,9 @@ button.createBtn{
 }
 .highlight{
     background-color: #FF1493;
+}
+.writePostBtn{
+    margin-top: 10px;
+    background-color: #ccc;
+    justify-content: center;
 }

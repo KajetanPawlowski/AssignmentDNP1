@@ -48,7 +48,7 @@ public class JwtAuthClient : IAuthHttpClient
 
     public Task LogoutAsync(string username)
     {
-        //Jwt = null;
+        Jwt = null;
         ClaimsPrincipal principal = new();
         OnAuthStateChanged.Invoke(principal);
         return Task.CompletedTask;

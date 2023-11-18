@@ -28,6 +28,9 @@
             <button class="feed-option @generalFocused" onclick="@showGeneral">General Feed</button>
             <button class="feed-option @personalFocused" onclick="@showPersonal">My Posts</button>
         </div>
+        
+        <button class="feed-buttons writePostBtn" onclick="@WritePost">Write a post</button>
+        
         @if (posts == null)
         {
             <div class="card">Loading posts....</div>
@@ -78,6 +81,10 @@
         personalFocused = "highlight";
         await LoadPosts();
         StateHasChanged();
+    }
+    private void WritePost()
+    {
+        navMgr.NavigateTo("/CreatePost");
     }
 
     private async Task LoadPosts()
