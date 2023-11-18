@@ -1,125 +1,26 @@
 {
   "Users": [
     {
-      "Id": 0,
-      "UserName": "admin",
+      "UserId": 0,
+      "Username": "admin",
       "Password": "admin",
-      "Role": "admin"
-    },
-    {
-      "Id": 3,
-      "UserName": "natalia",
-      "Password": "pass",
-      "Role": "user"
-    },
-    {
-      "Id": 4,
-      "UserName": "marek",
-      "Password": "dupa",
-      "Role": "user"
-    },
-    {
-      "Id": 6,
-      "UserName": "matej",
-      "Password": "pass",
-      "Role": "user"
-    },
-    {
-      "Id": 7,
-      "UserName": "marysia",
-      "Password": "dupa1234",
-      "Role": "user"
-    },
-    {
-      "Id": 8,
-      "UserName": "MaestroPetr",
-      "Password": "dapapico",
-      "Role": "user"
-    },
-    {
-      "Id": 11,
-      "UserName": "maja",
-      "Password": "pass",
-      "Role": "user"
+      "Role": "user",
+      "Posts": []
     }
   ],
   "Posts": [
     {
       "PostId": 0,
-      "Title": "New Post",
-      "Username": "natalia",
-      "Body": "Hello Everybody! this is my first post ever! Are you excited?",
-      "Timestamp": "2023-11-05T17:59:32.16682+01:00"
-    },
-    {
-      "PostId": 1,
-      "Title": "Hello This is my second post",
-      "Username": "natalia",
-      "Body": "very excited to write more about the experiance",
-      "Timestamp": "2023-11-05T18:08:06.651486+01:00"
-    },
-    {
-      "PostId": 4,
-      "Title": "The Adventure of a Lifetime: Exploring the Amazon Rainforest",
-      "Username": "natalia",
-      "Body": "I embarked on a life-changing adventure, exploring the Amazon Rainforest. The journey was filled with excitement as I immersed in its diverse ecosystem.",
-      "Timestamp": "2023-11-05T20:05:24.301152+01:00"
-    },
-    {
-      "PostId": 5,
-      "Title": "A Journey into the Heart of the Himalayas: Discovering Nature\u0027s Majesty",
-      "Username": "natalia",
-      "Body": "My expedition into the Himalayas was an odyssey that etched its beauty deep into my soul. The title, \u0022A Journey into the Heart of the Himalayas,\u0022 truly captured the essence of the adventure. \nWith each step, I drew closer to nature\u0027s grandeur, spellbound by the majesty of these towering peaks. The journey was a harmonious blend of excitement and awe, taking me into the heart of one of Earth\u0027s most captivating regions.\nAs I ventured into the dense forests, I found myself amidst a symphony of wildlife, from the elusive snow leopards to the melodic songbirds. The fragrance of wildflowers and the crisp mountain air were intoxicating.\n",
-      "Timestamp": "2023-11-05T20:07:30.949702+01:00"
-    },
-    {
-      "PostId": 6,
-      "Title": "A Journey into the Heart of the Himalayas: Discovering Nature\u0027s Majesty",
-      "Username": "natalia",
-      "Body": "My expedition into the Himalayas was an odyssey that etched its beauty deep into my soul. The title, \u0022A Journey into the Heart of the Himalayas,\u0022 truly captured the essence of the adventure. \n\nWith each step, I drew closer to nature\u0027s grandeur, spellbound by the majesty of these towering peaks. The journey was a harmonious blend of excitement and awe, taking me into the heart of one of Earth\u0027s most captivating regions.\n\nAs I ventured into the dense forests, I found myself amidst a symphony of wildlife, from the elusive snow leopards to the melodic songbirds. The fragrance of wildflowers and the crisp mountain air were intoxicating.\n\nDays were spent trekking through pristine landscapes, crossing meandering rivers, and encountering the cultural diversity of the Himalayan communities. I was welcomed with warmth and hospitality, gaining insights into their traditions and way of life.\n\nNights in the Himalayas revealed a celestial spectacle, with stars that seemed within arm\u0027s reach. The stillness of the mountains evoked a sense of serenity, a connection to something greater than myself.\n\nThe Himalayas, however, face challenges, including the impact of climate change. Witnessing these changes reinforced the urgency of conservation efforts and the need to protect this natural wonder.\n\nAs my journey concluded, I found that it had touched not just my senses but also my spirit. The Himalayas\u0027 grandeur remains etched in my heart, a reminder of the magnificence of our planet. It was an odyssey that left me committed to preserving these majestic mountains for generations to come.\n",
-      "Timestamp": "2023-11-05T20:08:25.690361+01:00"
-    },
-    {
-      "PostId": 7,
-      "Title": "Exploring the Enchanted Forest",
-      "Username": "marek",
-      "Body": "In a land far, far away, hidden from the hustle and bustle of modern life, lies an enchanted forest. The moment I set foot in this mystical realm, I knew I was in for an adventure of a lifetime.\n\nThe towering trees formed a majestic canopy, allowing only specks of golden sunlight to filter through. Birds of vibrant plumage filled the air with their melodious songs, and the earth beneath my feet seemed to whisper secrets of ancient times.\n\nAs I ventured deeper into the forest, I stumbled upon a magical waterfall, its crystal-clear waters cascading into a pristine pool. I couldn\u0027t resist the temptation and took a refreshing dip, feeling rejuvenated and alive.\n\nThe forest was alive with mythical creatures. I encountered fairies with wings that glistened like rainbows and mischievous elves playing pranks on one another. It was a world straight out of a fairy tale.\n\nBut the enchantment of the forest extended beyond its inhabitants. Every tree, every flower, and every rock seemed to possess an ethereal quality. I could almost hear the forest breathing, and it filled me with a sense of wonder and reverence for the natural world.\n\nAs I continued my exploration, I stumbled upon an ancient tree with gnarled roots and a wise, old face carved into its bark. The tree spoke to me in a language only my heart could understand, sharing tales of bygone eras and forgotten wisdom.\n\nThe journey through the enchanted forest was a profound experience, a reminder of the magic that still exists in our world. It left me with a deep appreciation for nature\u0027s beauty and an everlasting connection to the enchantment that lies within us all.",
-      "Timestamp": "2023-11-05T21:56:06.815088+01:00"
-    },
-    {
-      "PostId": 10,
-      "Title": "This is my opinion on the Barbie movie",
-      "Username": "matej",
-      "Body": "In this movie, Barbie is transported to the Enchanted Forest, a realm filled with talking animals, fairies, and magical creatures. She encounters new friends, including a wise old owl and a mischievous squirrel. Together, they set out on a quest to save the Enchanted Forest from an impending disaster.\n\nThe film\u0027s positive messages about friendship, courage, and environmental conservation are woven seamlessly into the narrative. Barbie\u0027s determination and kindness inspire viewers, teaching valuable life lessons along the way.\n\nThe enchanting visuals are a feast for the eyes, with lush forests, colorful flowers, and sparkling waterfalls. The musical score adds to the movie\u0027s charm, creating an immersive experience for the audience.",
-      "Timestamp": "2023-11-06T17:52:50.077049+01:00"
-    },
-    {
-      "PostId": 11,
-      "Title": "Marysia Joined the Dungeon",
-      "Username": "marysia",
-      "Body": "Hello There!",
-      "Timestamp": "2023-11-07T17:38:58.59856+01:00"
-    },
-    {
-      "PostId": 12,
-      "Title": "I\u0027m here ",
-      "Username": "MaestroPetr",
-      "Body": "Hello bitches I\u0027m here now as well ",
-      "Timestamp": "2023-11-07T17:43:26.32233+01:00"
-    },
-    {
-      "PostId": 16,
-      "Title": "New Post \uD83D\uDE1C",
-      "Username": "maja",
-      "Body": "wow this is a great place for the gossips ",
-      "Timestamp": "2023-11-10T10:53:39.602944+01:00"
-    },
-    {
-      "PostId": 17,
-      "Title": "Siem Damian",
-      "Username": "maja",
-      "Body": "Hahahaha",
-      "Timestamp": "2023-11-10T16:10:16.238699+01:00"
+      "Title": "test",
+      "User": {
+        "UserId": 0,
+        "Username": "admin",
+        "Password": "admin",
+        "Role": "user",
+        "Posts": []
+      },
+      "Body": "test",
+      "Timestamp": "2023-11-18T22:31:54.542833+01:00"
     }
   ]
 }

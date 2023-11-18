@@ -3,9 +3,12 @@ using Application.DAOInterfaces;
 using Application.Logic;
 using Application.LogicInterfaces;
 using Domain.Auth;
+using EfcDataAccess;
+using EfcDataAccess.DAO;
 using FileData;
 using FileData.DAOs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,9 +21,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //Program elements 
-builder.Services.AddScoped<FileContext>();
-builder.Services.AddScoped<IUserDAO, UserFileDao>();
-builder.Services.AddScoped<IPostDAO, PostFileDao>();
+builder.Services.AddDbContext<GossipsDbContext>();
+builder.Services.AddScoped<IUserDAO, UserEfcDao>();
+builder.Services.AddScoped<IPostDAO, PostEfcDao>();
+// builder.Services.AddScoped<FileContext>();
+// builder.Services.AddScoped<IUserDAO, UserFileDao>();
+// builder.Services.AddScoped<IPostDAO, PostFileDao>();
 
 builder.Services.AddScoped<IUserLogic, UserLogic>();
 builder.Services.AddScoped<IPostLogic, PostLogic>();

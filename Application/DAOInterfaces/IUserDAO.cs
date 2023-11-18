@@ -10,5 +10,5 @@ public interface IUserDAO
     Task<User> AssignRoleAsync(AssignRoleDTO dto);
     Task<User?> GetByUsernameAsync(string userName);
     Task<IEnumerable<User>> GetAsync(SearchUserParameterDTO searchParameters);
-    Task<User?> GetByIdAsync(int dtoOwnerId);
+    Task<User?> GetByIdAsync(int userId);
 }

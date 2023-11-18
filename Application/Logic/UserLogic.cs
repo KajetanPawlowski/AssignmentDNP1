@@ -25,9 +25,10 @@ public class UserLogic :IUserLogic
         ValidateRegistrationData(dto);
         User toCreate = new User 
         {
-            UserName = dto.Username,
+            Username = dto.Username,
             Password = dto.Password,
-            Role = "user"
+            Role = "user",
+            Posts = new List<Post>()
         };
     
         User created = await userDao.CreateAsync(toCreate);
@@ -44,11 +45,8 @@ public class UserLogic :IUserLogic
             throw new Exception("User not found");
         }
 
-        SearchPostParameterDTO findUserPosts = new()
-        {
-            UserName = username
-        };
-        IEnumerable<Post> userPosts = await postDao.GetAsync(findUserPosts);
+        
+        ICollection<Post> userPosts = await postDao.GetAsync(existingUser.UserId, null);
         
         foreach (var userPost in userPosts)
         {
@@ -107,5 +105,15 @@ public class UserLogic :IUserLogic
     {
         return userDao.GetAsync(searchParameters);
     }
- 
+
+    public Task<User> GetByIdAsync(int userId)
+    {
+        
+        return userDao.GetByIdAsync(userId);
+    }
+
+    public Task<User> GetByUsernameAsync(string username)
+    {
+        return userDao.GetByUsernameAsync(username);
+    }
 }

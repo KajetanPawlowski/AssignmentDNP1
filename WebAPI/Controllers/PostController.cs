@@ -1,3 +1,4 @@
+using Application.DAOInterfaces;
 using Application.LogicInterfaces;
 using Domain.DTOs;
 using Domain.Model;
@@ -13,10 +14,12 @@ namespace WebAPI.Controllers;
 public class PostController : ControllerBase
 {
     private readonly IPostLogic postLogic;
+    private readonly IUserLogic userLogic;
 
-    public PostController(IPostLogic postLogic)
+    public PostController(IPostLogic postLogic, IUserLogic userLogic)
     {
         this.postLogic = postLogic;
+        this.userLogic = userLogic;
     }
     //POST Post
     [HttpPost, Authorize(Policy = "isUser")]
@@ -36,16 +39,22 @@ public class PostController : ControllerBase
     }
     //GET Post
     [HttpGet, AllowAnonymous]
-    public async Task<ActionResult<IEnumerable<Post>>> GetByUsernameAsync([FromQuery] string? userName, [FromQuery] string? titleContent)
+    public async Task<ActionResult<IEnumerable<Post>>> GetByParamsAsync([FromQuery] string? username, [FromQuery] string? titleContent)
     {
         try
         {
-            SearchPostParameterDTO parameters = new()
+            int? userId = null;
+            User user = await userLogic.GetByUsernameAsync(username);
+            if (user != null)
             {
-                UserName = userName,
+                userId = user.UserId;
+            }
+            SearchPostParameterDTO searchPostParameterDto = new()
+            {
+                UserId = userId,
                 TitleContent = titleContent
             };
-            IEnumerable<Post> posts= await postLogic.GetAsync(parameters);
+            IEnumerable<Post> posts= await postLogic.GetAsync(searchPostParameterDto);
             return Ok(posts);
         }
         catch (Exception e)

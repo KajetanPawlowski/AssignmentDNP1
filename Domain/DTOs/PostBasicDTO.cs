@@ -3,15 +3,15 @@
 public class PostBasicDTO
 {
     public int PostId { get; }
-    public string? UserName { get; }
+    public int? UserId { get; }
     public string? Title { get; }
     public string? Body { get; }
     
     public DateTime Timestamp { get; set; }
-    public PostBasicDTO(string? title, string? userName, int postId, string? body, DateTime dateTime)
+    public PostBasicDTO(string? title, int? userId, int postId, string? body, DateTime dateTime)
     {
         Title = title;
-        UserName = userName;
+        UserId = userId;
         PostId = postId;
         Body = body;
         Timestamp = dateTime;

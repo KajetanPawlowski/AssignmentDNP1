@@ -10,6 +10,8 @@ public interface IUserLogic
     Task<User> ValidateUserAsync(UserLoginDTO dto);
     Task<User> AssignRoleAsync(AssignRoleDTO dto);
     Task<IEnumerable<User>> GetAsync(SearchUserParameterDTO searchParameters);
+    Task<User> GetByIdAsync(int userId);
+    Task<User> GetByUsernameAsync(string username);
 
     
 }

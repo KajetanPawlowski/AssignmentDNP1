@@ -25,18 +25,18 @@
 
     private async Task ChangeRole(User user)
     {
-        Console.WriteLine("Patch for user: " + user.UserName);
+        Console.WriteLine("Patch for user: " + user.Username);
         bool isAdmin = user.Role.Equals("admin");
         //opposite colour 
         color = user.Role.Equals("admin") ? "black" : "#FF1493";
-        await userHttpClient.ChangeRoleAsync(user.UserName, isAdmin);
+        await userHttpClient.ChangeRoleAsync(user.Username, isAdmin);
 
         await OnRoleChanged.InvokeAsync(null);
     }
     private async Task RemoveUser(User user)
     {
-        Console.WriteLine("Remove user: " + user.UserName);
-        await userHttpClient.RemoveUser(user.UserName);
+        Console.WriteLine("Remove user: " + user.Username);
+        await userHttpClient.RemoveUser(user.Username);
 
         await OnRoleChanged.InvokeAsync(null);
     }

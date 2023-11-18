@@ -2,6 +2,7 @@ using Application.DAOInterfaces;
 using Application.LogicInterfaces;
 using Domain.DTOs;
 using Domain.Model;
+using Exception = System.Exception;
 
 namespace Application.Logic;
 
@@ -22,16 +23,21 @@ public class PostLogic: IPostLogic
         
         User? user = await userDao.GetByUsernameAsync(dto.Username);
         if (user == null)
+        {
             throw new Exception("UserNotFound");
+        }
         
-        Post toCreate = new Post(user.UserName, dto.Title, dto.Body);
+        Post toCreate = new Post();
+        toCreate.User = user;
+        toCreate.Title = dto.Title;
+        toCreate.Body = dto.Body;
 
         Post created = await postDao.CreateAsync(toCreate);
-
+        user.Posts.Add(created);
         return created;
     }
 
-    private static void ValidatePostCreationData(PostCreationDTO dto)
+    private void ValidatePostCreationData(PostCreationDTO dto)
     {
         ValidatePostTitle(dto.Title);
         ValidatePostBody(dto.Body);
@@ -57,9 +63,9 @@ public class PostLogic: IPostLogic
         }
     }
     
-    public Task<List<Post>> GetAsync(SearchPostParameterDTO searchParameters)
+    public async Task<List<Post>> GetAsync(SearchPostParameterDTO searchParameters)
     {
-        return postDao.GetAsync(searchParameters);
+        return await postDao.GetAsync(searchParameters.UserId, searchParameters.TitleContent);
     }
 
     public async Task UpdateAsync(PostUpdateDTO dto)
@@ -92,7 +98,7 @@ public class PostLogic: IPostLogic
             throw new Exception($"Post with id {id} not found");
         }
 
-        return new PostBasicDTO(post.Title, post.Username, post.PostId, post.Body, post.Timestamp);
+        return new PostBasicDTO(post.Title, post.User.UserId, post.PostId, post.Body, post.Timestamp);
     }
 
     public async Task DeleteAsync(int id)

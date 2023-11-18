@@ -15,15 +15,6 @@ public class UserFileDao : IUserDAO
 // Post User
     public Task<User> CreateAsync(User user)
     {
-        int userId = 0;
-        if (context.Users.Any())
-        {
-            userId = context.Users.Max(u => u.Id);
-            userId++;
-        }
-
-        user.Id = userId;
-
         context.Users.Add(user);
         context.SaveChanges();
 
@@ -33,7 +24,7 @@ public class UserFileDao : IUserDAO
     public Task DeleteAsync(string username)
     {
         User? existing = context.Users.FirstOrDefault(u =>
-            u.UserName.Equals(username, StringComparison.OrdinalIgnoreCase)
+            u.Username.Equals(username, StringComparison.OrdinalIgnoreCase)
         );
         if(existing != null )
         {
@@ -46,7 +37,7 @@ public class UserFileDao : IUserDAO
     public Task<User> AssignRoleAsync(AssignRoleDTO dto)
     {
         User? existing = context.Users.FirstOrDefault(u =>
-            u.UserName.Equals(dto.Username, StringComparison.OrdinalIgnoreCase)
+            u.Username.Equals(dto.Username, StringComparison.OrdinalIgnoreCase)
         );
         ValidateRole(dto.Role);
         
@@ -75,7 +66,7 @@ public class UserFileDao : IUserDAO
     public Task<User?> GetByUsernameAsync(string userName)
     {
         User? existing = context.Users.FirstOrDefault(u =>
-            u.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase)
+            u.Username.Equals(userName, StringComparison.OrdinalIgnoreCase)
         );
         return Task.FromResult(existing);
     }
@@ -85,16 +76,14 @@ public class UserFileDao : IUserDAO
         IEnumerable<User> users = context.Users.AsEnumerable();
         if (searchParameters.UsernameContains != null)
         {
-            users = context.Users.Where(u => u.UserName.StartsWith(searchParameters.UsernameContains, StringComparison.OrdinalIgnoreCase));
+            users = context.Users.Where(u => u.Username.StartsWith(searchParameters.UsernameContains, StringComparison.OrdinalIgnoreCase));
         }
 
         return Task.FromResult(users);
     }
 
-    public Task<User?> GetByIdAsync(int dtoOwnerId)
+    public async Task<User?> GetByIdAsync(int userId)
     {
-        User? result = context.Users.FirstOrDefault(u => u.Id == dtoOwnerId);
-        
-        return Task.FromResult(result);
+        return context.Users.FirstOrDefault(u => u.UserId == userId);
     }
 }

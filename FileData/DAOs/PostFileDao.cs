@@ -30,26 +30,25 @@ public class PostFileDao : IPostDAO
         return Task.FromResult(post);
     }
 
-    public Task<List<Post>> GetAsync(SearchPostParameterDTO searchParameters) 
+    public async Task<List<Post>> GetAsync(int? userId, string? titleContent) 
     {
-        ICollection<Post> query = context.Posts;
-        if (!string.IsNullOrEmpty(searchParameters.UserName))
+        IQueryable<Post> query = context.Posts.AsQueryable();
+
+        if (userId != null)
         {
-                query = query.Where(post =>
-                    post.Username.Equals(searchParameters.UserName, StringComparison.OrdinalIgnoreCase)).ToList();
+            query = query.Where(post => post.User.UserId == userId);
         }
 
-        if (!string.IsNullOrEmpty(searchParameters.TitleContent))
+        if (!string.IsNullOrEmpty(titleContent))
         {
             query = query.Where(post =>
-                post.Title.Contains(searchParameters.TitleContent, StringComparison.OrdinalIgnoreCase)).ToList();
+                post.Title.Contains(titleContent, StringComparison.OrdinalIgnoreCase));
         }
 
         List<Post> result = query.ToList();
 
-        return Task.FromResult(result);
+        return result;
     }
-
     public Task UpdateAsync(PostUpdateDTO dto)
     {
         Post? existing = context.Posts.FirstOrDefault(post => post.PostId == dto.PostId);

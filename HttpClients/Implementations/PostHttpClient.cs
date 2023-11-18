@@ -65,7 +65,7 @@ public class PostHttpClient : IPostHttpClient
     {
         SearchPostParameterDTO dto = new()
         {
-            UserName = username
+            Username = username
         };
         string uri = "/Post";
         string query = ConstructQuery(dto);
@@ -86,9 +86,9 @@ public class PostHttpClient : IPostHttpClient
     private static string ConstructQuery(SearchPostParameterDTO dto)
     {
         string query = "";
-        if (!string.IsNullOrEmpty(dto.UserName))
+        if (!string.IsNullOrEmpty(dto.Username))
         {
-            query += $"?userName={dto.UserName}";
+            query += $"?userName={dto.Username}";
         }
         if (!string.IsNullOrEmpty(dto.TitleContent))
         {
