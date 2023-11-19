@@ -22,10 +22,6 @@ public class GossipsDbContext : DbContext
 
         modelBuilder.Entity<User>()
             .HasKey(user => user.UserId);
-
-        modelBuilder.Entity<Post>()
-            .HasOne(post => post.User) // Use the navigation property 'User'
-            .WithMany(user => user.Posts)
-            .HasForeignKey("UserId"); // Assuming UserId is the foreign key in Post
+        
     }
 }

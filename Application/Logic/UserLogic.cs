@@ -28,7 +28,6 @@ public class UserLogic :IUserLogic
             Username = dto.Username,
             Password = dto.Password,
             Role = "user",
-            Posts = new List<Post>()
         };
     
         User created = await userDao.CreateAsync(toCreate);

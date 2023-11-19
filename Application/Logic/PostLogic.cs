@@ -31,6 +31,7 @@ public class PostLogic: IPostLogic
         toCreate.User = user;
         toCreate.Title = dto.Title;
         toCreate.Body = dto.Body;
+        
 
         Post created = await postDao.CreateAsync(toCreate);
         return created;

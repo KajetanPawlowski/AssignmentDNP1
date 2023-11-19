@@ -1,39 +1,33 @@
 {
   "Users": [
     {
-      "UserId": 0,
+      "UserId": 1,
+      "Username": "maja",
+      "Password": "pass",
+      "Role": "admin",
+      "PostsId": []
+    },
+    {
+      "UserId": 2,
       "Username": "admin",
       "Password": "admin",
-      "Role": "user",
-      "Posts": []
+      "Role": "admin",
+      "PostsId": []
     }
   ],
   "Posts": [
     {
       "PostId": 0,
-      "Title": "test",
+      "Title": "qeurfnas,dck vselirvbzscmv elairgbiasd",
       "User": {
-        "UserId": 0,
-        "Username": "admin",
-        "Password": "admin",
-        "Role": "user",
-        "Posts": []
+        "UserId": 1,
+        "Username": "maja",
+        "Password": "pass",
+        "Role": "admin",
+        "PostsId": []
       },
-      "Body": "test",
-      "Timestamp": "2023-11-18T22:31:54.542833+01:00"
-    },
-    {
-      "PostId": 1,
-      "Title": "testing more stuff",
-      "User": {
-        "UserId": 0,
-        "Username": "admin",
-        "Password": "admin",
-        "Role": "user",
-        "Posts": []
-      },
-      "Body": "asdjfnslzidnjvalruvzsd",
-      "Timestamp": "2023-11-19T19:03:53.304178+01:00"
+      "Body": "alejfbvzlskcjnv arilgbuasidlvnjk,sdrvuaebrblvzsc",
+      "Timestamp": "2023-11-19T19:09:55.565447+01:00"
     }
   ]
 }
