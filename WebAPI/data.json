@@ -21,6 +21,19 @@
       },
       "Body": "test",
       "Timestamp": "2023-11-18T22:31:54.542833+01:00"
+    },
+    {
+      "PostId": 1,
+      "Title": "testing more stuff",
+      "User": {
+        "UserId": 0,
+        "Username": "admin",
+        "Password": "admin",
+        "Role": "user",
+        "Posts": []
+      },
+      "Body": "asdjfnslzidnjvalruvzsd",
+      "Timestamp": "2023-11-19T19:03:53.304178+01:00"
     }
   ]
 }

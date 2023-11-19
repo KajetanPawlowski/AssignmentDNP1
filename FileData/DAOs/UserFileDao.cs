@@ -1,5 +1,4 @@
 using Application.DAOInterfaces;
-using Domain.DTOs;
 using Domain.Model;
 
 namespace FileData.DAOs;
@@ -12,42 +11,39 @@ public class UserFileDao : IUserDAO
     {
         this.context = context;
     } 
-// Post User
     public Task<User> CreateAsync(User user)
     {
+        int userId = 0;
+        if (context.Users.Any())
+        {
+            userId = context.Users.Max(u => u.UserId);
+            userId++;
+        }
+        
+        user.UserId = userId;
         context.Users.Add(user);
         context.SaveChanges();
 
         return Task.FromResult(user);
     }
 
-    public Task DeleteAsync(string username)
+    public async Task DeleteAsync(int userId)
     {
-        User? existing = context.Users.FirstOrDefault(u =>
-            u.Username.Equals(username, StringComparison.OrdinalIgnoreCase)
-        );
-        if(existing != null )
-        {
-            context.Users.Remove(existing);
-            context.SaveChanges();
-        }
-        return Task.CompletedTask;
+        User existing = await GetByIdAsync(userId);
+        context.Users.Remove(existing);
+        context.SaveChanges();
     }
 
-    public Task<User> AssignRoleAsync(AssignRoleDTO dto)
+    public async Task<User> AssignRoleAsync(int userId, string newRole)
     {
-        User? existing = context.Users.FirstOrDefault(u =>
-            u.Username.Equals(dto.Username, StringComparison.OrdinalIgnoreCase)
-        );
-        ValidateRole(dto.Role);
-        
-        existing.Role = dto.Role;
+        User existing = await GetByIdAsync(userId);
+        ValidateRole(newRole);
+        existing.Role = newRole;
         
         context.SaveChanges();
-        
-        return Task.FromResult(existing);
-    }
+        return await Task.FromResult(existing);
 
+    }
     private void ValidateRole(string role)
     {
         switch (role)
@@ -61,8 +57,6 @@ public class UserFileDao : IUserDAO
                 throw new Exception("Invalid role");
         }
     }
-
-
     public Task<User?> GetByUsernameAsync(string userName)
     {
         User? existing = context.Users.FirstOrDefault(u =>
@@ -70,20 +64,21 @@ public class UserFileDao : IUserDAO
         );
         return Task.FromResult(existing);
     }
-// Get Users (param)
-    public Task<IEnumerable<User>> GetAsync(SearchUserParameterDTO searchParameters)
-    {
-        IEnumerable<User> users = context.Users.AsEnumerable();
-        if (searchParameters.UsernameContains != null)
-        {
-            users = context.Users.Where(u => u.Username.StartsWith(searchParameters.UsernameContains, StringComparison.OrdinalIgnoreCase));
-        }
 
-        return Task.FromResult(users);
+    public Task<List<User>> GetAsync()
+    {
+        return Task.FromResult(context.Users.ToList());
     }
 
-    public async Task<User?> GetByIdAsync(int userId)
+    public async Task<User> GetByIdAsync(int userId)
     {
-        return context.Users.FirstOrDefault(u => u.UserId == userId);
+        User? existing = context.Users.FirstOrDefault(u =>
+            u.UserId == userId);
+        if(existing == null)
+        {
+            throw new Exception("User not found");
+        }
+
+        return await Task.FromResult(existing);
     }
 }

@@ -2,7 +2,7 @@ namespace Domain.DTOs;
 
 public class SearchUserParameterDTO
 {
-    public string? UsernameContains { get; init; }
+    public string? Username { get; init; }
     public int? UserId{ get; init; }
 
 }

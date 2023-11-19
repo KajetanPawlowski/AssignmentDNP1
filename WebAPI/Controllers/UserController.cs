@@ -41,12 +41,13 @@ public class UserController : ControllerBase
     {
         try
         {
-            SearchUserParameterDTO parameters = new ()
+            IEnumerable<User> users = await userLogic.GetUsersAsync(); 
+            if (username != null)
             {
-                UsernameContains = username
-            };
-            
-            IEnumerable<User> users = await userLogic.GetAsync(parameters);
+                var userByUsername = await userLogic.GetByUsernameAsync(username);
+                    users = userByUsername != null ? new List<User> { userByUsername } : Enumerable.Empty<User>();
+            }
+
             return Ok(users);
         }
         catch (Exception e)
@@ -61,7 +62,7 @@ public class UserController : ControllerBase
     {
         try
         {
-            User user = await userLogic.AssignRoleAsync(dto);
+            User? user = await userLogic.AssignRoleAsync(dto);
             return Ok(user);
         }
         catch (Exception e)

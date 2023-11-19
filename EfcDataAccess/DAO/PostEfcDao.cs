@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace EfcDataAccess.DAO;
 
-public class PostEfcDao : IPostDAO
+public class PostEfcDao
 {
     private readonly GossipsDbContext context;
     

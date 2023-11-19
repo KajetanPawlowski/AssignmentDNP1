@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace EfcDataAccess.DAO;
 
-public class UserEfcDao : IUserDAO
+public class UserEfcDao
 {
     private readonly GossipsDbContext context;
     
@@ -56,21 +56,21 @@ public class UserEfcDao : IUserDAO
         return existing;
     }
 
-    public async Task<IEnumerable<User>> GetAsync(SearchUserParameterDTO searchParameters)
-    {
-        IQueryable<User> usersQuery = context.Users.AsQueryable();
-        if (searchParameters.UsernameContains != null)
-        {
-            usersQuery = usersQuery.Where(u => u.Username.Contains(searchParameters.UsernameContains));
-        }
-
-        IEnumerable<User> result = await usersQuery.ToListAsync();
-        return result;
-    }
-
-    public async Task<User?> GetByIdAsync(int dtoOwnerId)
-    {
-        User? user = await context.Users.FindAsync(dtoOwnerId);
-        return user;
-    }
+    // public async Task<IEnumerable<User>> GetAsync(SearchUserParameterDTO searchParameters)
+    // {
+    //     IQueryable<User> usersQuery = context.Users.AsQueryable();
+    //     if (searchParameters.UsernameContains != null)
+    //     {
+    //         usersQuery = usersQuery.Where(u => u.Username.Contains(searchParameters.UsernameContains));
+    //     }
+    //
+    //     IEnumerable<User> result = await usersQuery.ToListAsync();
+    //     return result;
+    // }
+    //
+    // public async Task<User?> GetByIdAsync(int dtoOwnerId)
+    // {
+    //     User? user = await context.Users.FindAsync(dtoOwnerId);
+    //     return user;
+    // }
 }

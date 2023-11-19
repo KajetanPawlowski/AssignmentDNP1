@@ -33,7 +33,6 @@ public class PostLogic: IPostLogic
         toCreate.Body = dto.Body;
 
         Post created = await postDao.CreateAsync(toCreate);
-        user.Posts.Add(created);
         return created;
     }
 
@@ -63,31 +62,48 @@ public class PostLogic: IPostLogic
         }
     }
     
-    public async Task<List<Post>> GetAsync(SearchPostParameterDTO searchParameters)
+    public async Task<List<Post?>> GetAsync(SearchPostParameterDTO searchParameters)
     {
-        return await postDao.GetAsync(searchParameters.UserId, searchParameters.TitleContent);
+        if (searchParameters.UserId != null)
+        {
+            return await postDao.GetByUserIdAsync((int)searchParameters.UserId);
+        }
+        if (searchParameters.Username != null)
+        {
+            int userId = userDao.GetByUsernameAsync(searchParameters.Username).Id;
+            return await postDao.GetByUserIdAsync(userId);
+        }
+        if (searchParameters.TitleContent != null)
+        {
+            return await postDao.GetByTitleAsync(searchParameters.TitleContent);
+        }
+
+        return await postDao.GetPostsAsync();
     }
 
     public async Task UpdateAsync(PostUpdateDTO dto)
     {
         Post? existing = await postDao.GetByIdAsync(dto.PostId);
-        
         if (existing == null)
         {
             throw new Exception($"Post with ID {dto.PostId} not found!");
         }
+        Post updatedPost = existing;
         //if null - keep the old title
         if (dto.NewTitle != null)
         {
             ValidatePostTitle(dto.NewTitle);
+            updatedPost.Title = dto.NewTitle;
         }
         //if null - keep ald body
         if (dto.NewBody != null)
         {
             ValidatePostBody(dto.NewBody);
+            updatedPost.Body = dto.NewBody;
         }
+        updatedPost.Timestamp = DateTime.Now;
         
-        await postDao.UpdateAsync(dto);
+        await postDao.UpdateAsync(dto.PostId, updatedPost);
     }
 
     public async Task<PostBasicDTO> GetByIdAsync(int id)

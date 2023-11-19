@@ -46,14 +46,14 @@ public class UserLogic :IUserLogic
         }
 
         
-        ICollection<Post> userPosts = await postDao.GetAsync(existingUser.UserId, null);
+        ICollection<Post?> userPosts = await postDao.GetByUserIdAsync(existingUser.UserId);
         
         foreach (var userPost in userPosts)
         {
-            await postDao.DeleteAsync(userPost.PostId);
+            if (userPost != null) await postDao.DeleteAsync(userPost.PostId);
         }
         
-        await userDao.DeleteAsync(username);
+        await userDao.DeleteAsync(existingUser.UserId);
     }
 
     public async Task<User> ValidateUserAsync(UserLoginDTO dto)
@@ -73,7 +73,7 @@ public class UserLogic :IUserLogic
         return await Task.FromResult(existingUser);
     }
 
-    public async Task<User> AssignRoleAsync(AssignRoleDTO dto)
+    public async Task<User?> AssignRoleAsync(AssignRoleDTO dto)
     {
         User? existingUser = await userDao.GetByUsernameAsync(dto.Username);
         
@@ -82,7 +82,7 @@ public class UserLogic :IUserLogic
             throw new Exception("User not found");
         }
         
-        return await userDao.AssignRoleAsync(dto);
+        return await userDao.AssignRoleAsync(existingUser.UserId, dto.Role);
     }
 
     private static void ValidateRegistrationData(UserLoginDTO userToCreate)
@@ -101,18 +101,18 @@ public class UserLogic :IUserLogic
         if (password.Length > 15)
             throw new Exception("Password must be less than 16 characters!");
     }
-    public Task<IEnumerable<User>> GetAsync(SearchUserParameterDTO searchParameters)
+    public Task<List<User?>> GetUsersAsync()
     {
-        return userDao.GetAsync(searchParameters);
+        return userDao.GetAsync();
     }
 
-    public Task<User> GetByIdAsync(int userId)
+    public Task<User?> GetByIdAsync(int userId)
     {
         
         return userDao.GetByIdAsync(userId);
     }
 
-    public Task<User> GetByUsernameAsync(string username)
+    public Task<User?> GetByUsernameAsync(string username)
     {
         return userDao.GetByUsernameAsync(username);
     }
