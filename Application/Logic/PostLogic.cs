@@ -22,15 +22,18 @@ public class PostLogic: IPostLogic
         ValidatePostCreationData(dto);
         
         User? user = await userDao.GetByUsernameAsync(dto.Username);
+       
         if (user == null)
         {
             throw new Exception("UserNotFound");
         }
         
-        Post toCreate = new Post();
-        toCreate.User = user;
-        toCreate.Title = dto.Title;
-        toCreate.Body = dto.Body;
+        Post toCreate = new()
+        {
+            UserId = user.UserId,
+            Title = dto.Title,
+            Body = dto.Body
+        };
         
 
         Post created = await postDao.CreateAsync(toCreate);
@@ -115,7 +118,7 @@ public class PostLogic: IPostLogic
             throw new Exception($"Post with id {id} not found");
         }
 
-        return new PostBasicDTO(post.Title, post.User.UserId, post.PostId, post.Body, post.Timestamp);
+        return new PostBasicDTO(post.Title, post.UserId, post.PostId, post.Body, post.Timestamp);
     }
 
     public async Task DeleteAsync(int id)

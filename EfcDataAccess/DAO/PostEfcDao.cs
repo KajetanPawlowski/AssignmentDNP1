@@ -16,7 +16,8 @@ public class PostEfcDao : IPostDAO
     }
     public async Task<Post> CreateAsync(Post post)
     {
-        EntityEntry<Post> added = await context.Posts.AddAsync(post);
+        post.Timestamp = DateTime.Now;
+        EntityEntry<Post> added = context.Posts.Add(post);
         await context.SaveChangesAsync();
         return added.Entity;
     }
@@ -25,7 +26,7 @@ public class PostEfcDao : IPostDAO
     {
         IQueryable<Post> query = context.Posts.AsQueryable();
         query = query.Where(post =>
-            post.User.UserId == userId);
+            post.UserId == userId);
         List<Post> result = query.ToList();
         
         return Task.FromResult(result);

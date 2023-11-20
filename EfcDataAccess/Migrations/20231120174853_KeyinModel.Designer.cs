@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfcDataAccess.Migrations
 {
     [DbContext(typeof(GossipsDbContext))]
-    [Migration("20231119182239_Attempt8")]
-    partial class Attempt8
+    [Migration("20231120174853_KeyinModel")]
+    partial class KeyinModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
