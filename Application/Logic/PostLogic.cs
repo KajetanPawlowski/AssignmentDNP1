@@ -82,30 +82,30 @@ public class PostLogic: IPostLogic
         return await postDao.GetPostsAsync();
     }
 
-    public async Task UpdateAsync(PostUpdateDTO dto)
-    {
-        Post? existing = await postDao.GetByIdAsync(dto.PostId);
-        if (existing == null)
-        {
-            throw new Exception($"Post with ID {dto.PostId} not found!");
-        }
-        Post updatedPost = existing;
-        //if null - keep the old title
-        if (dto.NewTitle != null)
-        {
-            ValidatePostTitle(dto.NewTitle);
-            updatedPost.Title = dto.NewTitle;
-        }
-        //if null - keep ald body
-        if (dto.NewBody != null)
-        {
-            ValidatePostBody(dto.NewBody);
-            updatedPost.Body = dto.NewBody;
-        }
-        updatedPost.Timestamp = DateTime.Now;
-        
-        await postDao.UpdateAsync(dto.PostId, updatedPost);
-    }
+    // public async Task UpdateAsync(PostUpdateDTO dto)
+    // {
+    //     Post? existing = await postDao.GetByIdAsync(dto.PostId);
+    //     if (existing == null)
+    //     {
+    //         throw new Exception($"Post with ID {dto.PostId} not found!");
+    //     }
+    //     Post updatedPost = existing;
+    //     //if null - keep the old title
+    //     if (dto.NewTitle != null)
+    //     {
+    //         ValidatePostTitle(dto.NewTitle);
+    //         updatedPost.Title = dto.NewTitle;
+    //     }
+    //     //if null - keep ald body
+    //     if (dto.NewBody != null)
+    //     {
+    //         ValidatePostBody(dto.NewBody);
+    //         updatedPost.Body = dto.NewBody;
+    //     }
+    //     updatedPost.Timestamp = DateTime.Now;
+    //     
+    //     await postDao.UpdateAsync(dto.PostId, updatedPost);
+    // }
 
     public async Task<PostBasicDTO> GetByIdAsync(int id)
     {

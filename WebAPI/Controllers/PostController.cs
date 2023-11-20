@@ -22,7 +22,7 @@ public class PostController : ControllerBase
         this.userLogic = userLogic;
     }
     //POST Post
-    [HttpPost, Authorize(Policy = "isUser")]
+    [HttpPost,  AllowAnonymous]
     public async Task<ActionResult<Post>> CreateAsync(PostCreationDTO dto)
     {
         Console.WriteLine("Trying my best");
@@ -69,7 +69,7 @@ public class PostController : ControllerBase
     {
         try
         {
-            await postLogic.UpdateAsync(post);
+            // await postLogic.UpdateAsync(post);
             return Ok();
         }
         catch (Exception e)

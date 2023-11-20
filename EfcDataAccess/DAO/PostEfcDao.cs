@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace EfcDataAccess.DAO;
 
-public class PostEfcDao
+public class PostEfcDao : IPostDAO
 {
     private readonly GossipsDbContext context;
     
@@ -21,47 +21,34 @@ public class PostEfcDao
         return added.Entity;
     }
 
-    public Task<List<Post>> GetAsync(int? userId, string? titleContent)
+    public Task<List<Post?>> GetByUserIdAsync(int userId)
     {
         IQueryable<Post> query = context.Posts.AsQueryable();
-        if (userId != null)
-        {
-            query = query.Where(post =>
-                post.User.UserId == userId);
-        }
+        query = query.Where(post =>
+            post.User.UserId == userId);
+        List<Post> result = query.ToList();
+        
+        return Task.FromResult(result);
+    }
 
+    public Task<List<Post?>> GetByTitleAsync(string titleContent)
+    {
+        IQueryable<Post> query = context.Posts.AsQueryable();
         if (!string.IsNullOrEmpty(titleContent))
         {
             query = query.Where(post =>
                 post.Title.ToLower().Contains(titleContent));
         }
-
         List<Post> result = query.ToList();
-
+        
         return Task.FromResult(result);
     }
 
-    public async Task UpdateAsync(PostUpdateDTO dto)
+    public Task<List<Post?>> GetPostsAsync()
     {
-        Post? existing = context.Posts.FirstOrDefault(post => post.PostId == dto.PostId);
-        if (existing == null)
-        {
-            throw new Exception($"Post with id {dto.PostId} does not exist!");
-        }
-        if (dto.NewTitle != null)
-        {
-            existing.Title = dto.NewTitle;
-        }
-        if (dto.NewBody != null)
-        {
-            existing.Body = dto.NewBody;
-        }
-
-        existing.Timestamp = DateTime.Now;
-
-        context.Update(existing);
-        await context.SaveChangesAsync();
+        return Task.FromResult(context.Posts.ToList());
     }
+    
 
     public Task<Post?> GetByIdAsync(int id)
     {
