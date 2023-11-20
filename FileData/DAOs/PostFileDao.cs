@@ -33,7 +33,7 @@ public class PostFileDao : IPostDAO
 
     public async Task<List<Post?>> GetByUserIdAsync(int userId)
     {
-        IEnumerable<Post?> postsCollection = context.Posts.Where(post => post.User.UserId == userId);
+        IEnumerable<Post?> postsCollection = context.Posts.Where(post => post.UserId == userId);
         return await Task.FromResult(postsCollection.ToList());
     }
 

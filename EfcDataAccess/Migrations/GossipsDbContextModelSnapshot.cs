@@ -39,8 +39,6 @@ namespace EfcDataAccess.Migrations
 
                     b.HasKey("PostId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Posts");
                 });
 
@@ -65,17 +63,6 @@ namespace EfcDataAccess.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Domain.Model.Post", b =>
-                {
-                    b.HasOne("Domain.Model.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

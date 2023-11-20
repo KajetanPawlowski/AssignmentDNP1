@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfcDataAccess.Migrations
 {
     [DbContext(typeof(GossipsDbContext))]
-    [Migration("20231118213253_Attempt7")]
-    partial class Attempt7
+    [Migration("20231120185722_newConstructorinPost")]
+    partial class newConstructorinPost
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,17 +73,12 @@ namespace EfcDataAccess.Migrations
             modelBuilder.Entity("Domain.Model.Post", b =>
                 {
                     b.HasOne("Domain.Model.User", "User")
-                        .WithMany("Posts")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Domain.Model.User", b =>
-                {
-                    b.Navigation("Posts");
                 });
 #pragma warning restore 612, 618
         }

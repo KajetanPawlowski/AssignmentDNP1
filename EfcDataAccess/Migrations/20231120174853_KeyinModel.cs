@@ -5,7 +5,7 @@
 namespace EfcDataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class Attempt8 : Migration
+    public partial class KeyinModel : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
